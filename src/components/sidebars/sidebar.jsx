@@ -45,6 +45,7 @@ function Sidebar({ isShowSidebar }) {
 							<SubmenuComponent
 								name="Golongan obat"
 								icon="fa-solid fa-shapes"
+								link="/group"
 							/>
 							<SubmenuComponent name="Merk obat" icon="fa-solid fa-shapes" />
 							<SubmenuComponent name="Satuan obat" icon="fa-solid fa-shapes" />
