@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebars/sidebar";
 import Role from "./pages/master-data/roles";
+import Category from "./pages/master-data/categories";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -28,6 +29,7 @@ function App() {
 						<div className="mt-8 flex w-[95%] justify-center">
 							<Routes>
 								<Route path="/role" element={<Role />} />
+								<Route path="/category" element={<Category />} />
 							</Routes>
 						</div>
 					</div>
