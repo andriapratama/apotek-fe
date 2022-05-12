@@ -47,8 +47,16 @@ function Sidebar({ isShowSidebar }) {
 								icon="fa-solid fa-shapes"
 								link="/group"
 							/>
-							<SubmenuComponent name="Merk obat" icon="fa-solid fa-shapes" />
-							<SubmenuComponent name="Satuan obat" icon="fa-solid fa-shapes" />
+							<SubmenuComponent
+								name="Merk obat"
+								icon="fa-solid fa-shapes"
+								link="/brand"
+							/>
+							<SubmenuComponent
+								name="Satuan obat"
+								icon="fa-solid fa-shapes"
+								link="/unit"
+							/>
 						</div>
 					</div>
 				</div>
