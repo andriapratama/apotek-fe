@@ -14,7 +14,7 @@ function Sidebar({ isShowSidebar }) {
 		>
 			<div className="sidebar__body w-full">
 				<div className="mt-10">
-					<div className="relative">
+					<div className="master-data relative">
 						<MenuComponent
 							name="Master Data"
 							icon="fa-solid fa-database"
@@ -24,12 +24,14 @@ function Sidebar({ isShowSidebar }) {
 
 						<div
 							className={
-								isShowMasterData
-									? "visible relative z-10"
-									: "invisible absolute"
+								isShowMasterData ? "visible relative" : "invisible absolute"
 							}
 						>
-							<SubmenuComponent name="Role" icon="fa-solid fa-shapes" />
+							<SubmenuComponent
+								name="Role"
+								icon="fa-solid fa-shapes"
+								link="/role"
+							/>
 							<SubmenuComponent
 								name="Kategori obat"
 								icon="fa-solid fa-shapes"
