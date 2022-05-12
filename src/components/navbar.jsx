@@ -1,10 +1,13 @@
 import profil from "../img/photo-1622548331053-105252394.jpeg";
 
-function Navbar() {
+function Navbar({ setIsShowSidebar, isShowSidebar }) {
 	return (
 		<nav className="flex h-[60px] w-full items-center justify-between border-b border-slate-200 shadow-md shadow-slate-100">
 			<div className="ml-5 flex h-full items-center text-2xl">
-				<div className="flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-full hover:bg-slate-200">
+				<div
+					className="flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-full hover:bg-slate-200"
+					onClick={() => setIsShowSidebar(!isShowSidebar)}
+				>
 					<i className="fa-solid fa-bars text-slate-500" />
 				</div>
 
