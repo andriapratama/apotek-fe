@@ -1,4 +1,9 @@
 import { TextField } from "../../../components/form.field";
+import {
+	ButtonPrimay,
+	IconButtonDelete,
+	IconButtonEdit,
+} from "../../../components/button";
 
 function Role() {
 	return (
@@ -14,9 +19,7 @@ function Role() {
 							<TextField />
 						</div>
 
-						<div className="cursor-pointer rounded-md bg-sky-500 px-4 py-[5px] text-sm text-white hover:opacity-80">
-							Save
-						</div>
+						<ButtonPrimay name="save" />
 					</form>
 				</div>
 			</div>
@@ -47,13 +50,8 @@ function Role() {
 								<td>1</td>
 								<td>Super Admin</td>
 								<td className="flex justify-center py-2">
-									<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-slate-500 text-white">
-										<i className="fa-solid fa-pencil" />
-									</div>
-
-									<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-red-500 text-white">
-										<i className="fa-regular fa-trash-can" />
-									</div>
+									<IconButtonEdit />
+									<IconButtonDelete />
 								</td>
 							</tr>
 							<tr className="border-b border-slate-200">
