@@ -37,7 +37,11 @@ function Sidebar({ isShowSidebar }) {
 								icon="fa-solid fa-shapes"
 								link="/category"
 							/>
-							<SubmenuComponent name="Jenis obat" icon="fa-solid fa-shapes" />
+							<SubmenuComponent
+								name="Jenis obat"
+								icon="fa-solid fa-shapes"
+								link="/type"
+							/>
 							<SubmenuComponent
 								name="Golongan obat"
 								icon="fa-solid fa-shapes"

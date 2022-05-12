@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebars/sidebar";
 import Role from "./pages/master-data/roles";
 import Category from "./pages/master-data/categories";
+import Type from "./pages/master-data/types";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -30,6 +31,7 @@ function App() {
 							<Routes>
 								<Route path="/role" element={<Role />} />
 								<Route path="/category" element={<Category />} />
+								<Route path="/type" element={<Type />} />
 							</Routes>
 						</div>
 					</div>
