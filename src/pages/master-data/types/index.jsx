@@ -1,26 +1,62 @@
-import { TextField } from "../../../components/form.field";
-import {
-	ButtonPrimay,
-	IconButtonDelete,
-	IconButtonEdit,
-} from "../../../components/button";
+import { IconButtonDelete, IconButtonEdit } from "../../../components/button";
+import { deleteTypeDataApi } from "../../../api/type.api";
+import TypeCreate from "./type.create";
+import TypeEdit from "./type.edit";
+import { Pagination } from "../../../components/pagination";
+import { DangerAlert } from "../../../components/alert";
+import { useTypeHook } from "./type.hook";
 
 function Type() {
+	const {
+		typeList,
+		typeValue,
+		setTypeValue,
+		showAllTypeData,
+		isDangerAlert,
+		setIsDangerAlert,
+		isShowUpdate,
+		setIsShowUpdate,
+		handleEdit,
+		errorsMessage,
+		setErrorsMessage,
+		formikStore,
+		formikUpdate,
+		totalPage,
+		handleNext,
+		handlePrev,
+		page,
+		handleSearch,
+	} = useTypeHook();
 	return (
 		<section className="type min-h-[80vh] w-full">
+			<DangerAlert
+				id={typeValue.typeId}
+				deleteDataApi={deleteTypeDataApi}
+				showAllData={showAllTypeData}
+				isDangerAlert={isDangerAlert}
+				setIsDangerAlert={setIsDangerAlert}
+			/>
 			<div className="type__head mb-5">
 				<span className="text-2xl text-slate-600">Data Jenis Obat</span>
 			</div>
 
 			<div className="type__body mb-5 w-full rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-200">
 				<div className="p-5">
-					<form className="h-100 flex w-full items-center justify-start">
-						<div className="mr-5 w-[300px]">
-							<TextField placeholder="Input type" />
-						</div>
-
-						<ButtonPrimay name="save" />
-					</form>
+					{isShowUpdate ? (
+						<TypeEdit
+							formik={formikUpdate}
+							errorsMessage={errorsMessage}
+							setErrorsMessage={setErrorsMessage}
+							setIsShowUpdate={setIsShowUpdate}
+							setTypeValue={setTypeValue}
+						/>
+					) : (
+						<TypeCreate
+							formik={formikStore}
+							errorsMessage={errorsMessage}
+							setErrorsMessage={setErrorsMessage}
+						/>
+					)}
 				</div>
 			</div>
 
@@ -31,6 +67,7 @@ function Type() {
 							className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
 							placeholder="Search"
 							type="text"
+							onChange={(e) => handleSearch(e.target.value)}
 						/>
 						<div className="flex w-[50px] items-center justify-center border-l-2">
 							<i className="fa-solid fa-magnifying-glass text-slate-700" />
@@ -46,45 +83,40 @@ function Type() {
 							</tr>
 						</thead>
 						<tbody>
-							<tr className="border-b border-slate-200">
-								<td>221</td>
-								<td>Analgisik</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
-							<tr className="border-b border-slate-200">
-								<td>222</td>
-								<td>Antasida</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
-							<tr className="border-b border-slate-200">
-								<td>223</td>
-								<td>Anticemas</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
+							{typeList.map((type, index) => {
+								return (
+									<tr className="border-b border-slate-200" key={index}>
+										<td>{type.type_id}</td>
+										<td className="capitalize">{type.name}</td>
+										<td className="flex justify-center py-2">
+											<div onClick={() => handleEdit(type)}>
+												<IconButtonEdit />
+											</div>
+											<div
+												onClick={() => {
+													setTypeValue({
+														typeId: type.type_id,
+														name: "",
+													});
+													setIsDangerAlert(true);
+												}}
+											>
+												<IconButtonDelete />
+											</div>
+										</td>
+									</tr>
+								);
+							})}
 						</tbody>
 					</table>
 
 					<div className="type__footer flex">
-						<div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-l-md border text-slate-700 hover:bg-slate-200">
-							<i className="fa-solid fa-angle-left text-slate-700" />
-						</div>
-
-						<div className="flex h-8 w-8 items-center justify-center border-t border-b text-slate-700">
-							<span>1</span>
-						</div>
-
-						<div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-r-md border text-slate-700 hover:bg-slate-200">
-							<i className="fa-solid fa-angle-right text-slate-700" />
-						</div>
+						<Pagination
+							page={page}
+							totalPage={totalPage}
+							handleNext={handleNext}
+							handlePrev={handlePrev}
+						/>
 					</div>
 				</div>
 			</div>
