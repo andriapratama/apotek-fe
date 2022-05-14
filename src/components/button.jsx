@@ -1,8 +1,44 @@
-export const ButtonPrimay = ({ name }) => {
+export const ButtonPrimay = ({ name, ...props }) => {
 	return (
-		<div className="cursor-pointer rounded-md bg-sky-500 px-4 py-[5px] text-sm text-white hover:opacity-80">
+		<button
+			className="cursor-pointer rounded-md bg-sky-500 px-4 py-[5px] text-sm text-white hover:opacity-80"
+			{...props}
+		>
 			{name}
-		</div>
+		</button>
+	);
+};
+
+export const ButtonPrimayLg = ({ name, ...props }) => {
+	return (
+		<button
+			className="cursor-pointer rounded-md bg-sky-500 px-6 py-[10px] tracking-wider text-white hover:opacity-80"
+			{...props}
+		>
+			{name}
+		</button>
+	);
+};
+
+export const ButtonSecondary = ({ name, ...props }) => {
+	return (
+		<button
+			className="cursor-pointer rounded-md bg-slate-500 px-4 py-[5px] text-sm text-white hover:opacity-80"
+			{...props}
+		>
+			{name}
+		</button>
+	);
+};
+
+export const ButtonSecondaryLg = ({ name, ...props }) => {
+	return (
+		<button
+			className="cursor-pointer rounded-md bg-slate-500 px-6 py-[10px] tracking-wider text-white hover:opacity-80"
+			{...props}
+		>
+			{name}
+		</button>
 	);
 };
 
