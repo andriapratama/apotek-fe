@@ -11,20 +11,24 @@ import Unit from "./pages/master-data/units";
 import AddProduct from "./pages/products/add-products";
 import ProductList from "./pages/products/product-lists";
 import StockOpname from "./pages/products/stock-opnames";
+import AddSupplier from "./pages/suppliers/add-suppliers";
+import SupplierList from "./pages/suppliers/supplier-lists";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
 
 	return (
-		<div className="App bg-slate-100">
+		<div className="App relative">
 			<Navbar
 				setIsShowSidebar={setIsShowSidebar}
 				isShowSidebar={isShowSidebar}
 			/>
 
 			<BrowserRouter>
-				<div className="relative flex">
-					<Sidebar isShowSidebar={isShowSidebar} />
+				<div className="relative top-[60px]">
+					<div className="fixed w-2/12">
+						<Sidebar isShowSidebar={isShowSidebar} />
+					</div>
 
 					<div
 						className={`absolute right-0 flex justify-center bg-slate-100 ${
@@ -44,6 +48,14 @@ function App() {
 								<Route path="/product/add-product" element={<AddProduct />} />
 								<Route path="/product/product-list" element={<ProductList />} />
 								<Route path="/product/stock-opname" element={<StockOpname />} />
+								<Route
+									path="/supplier/add-supplier"
+									element={<AddSupplier />}
+								/>
+								<Route
+									path="/supplier/supplier-list"
+									element={<SupplierList />}
+								/>
 							</Routes>
 						</div>
 					</div>
