@@ -1,26 +1,63 @@
-import { TextField } from "../../../components/form.field";
-import {
-	ButtonPrimay,
-	IconButtonDelete,
-	IconButtonEdit,
-} from "../../../components/button";
+import { IconButtonDelete, IconButtonEdit } from "../../../components/button";
+import { deleteRoleDataApi } from "../../../api/role.api";
+import RoleCreate from "./role.create";
+import RoleEdit from "./role.edit";
+import { Pagination } from "../../../components/pagination";
+import { DangerAlert } from "../../../components/alert";
+import { useRoleHook } from "./role.hook";
 
 function Role() {
+	const {
+		roleList,
+		roleValue,
+		setRoleValue,
+		showAllRoleData,
+		isDangerAlert,
+		setIsDangerAlert,
+		isShowUpdate,
+		setIsShowUpdate,
+		handleEdit,
+		errorsMessage,
+		setErrorsMessage,
+		formikStore,
+		formikUpdate,
+		totalPage,
+		handleNext,
+		handlePrev,
+		page,
+		handleSearch,
+	} = useRoleHook();
+
 	return (
 		<section className="role min-h-[80vh] w-full">
+			<DangerAlert
+				id={roleValue.roleId}
+				deleteDataApi={deleteRoleDataApi}
+				showAllData={showAllRoleData}
+				isDangerAlert={isDangerAlert}
+				setIsDangerAlert={setIsDangerAlert}
+			/>
 			<div className="role__head mb-5">
 				<span className="text-2xl text-slate-600">Data Role</span>
 			</div>
 
 			<div className="role__body mb-5 w-full rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-200">
 				<div className="p-5">
-					<form className="h-100 flex w-full items-center justify-start">
-						<div className="mr-5 w-[300px]">
-							<TextField />
-						</div>
-
-						<ButtonPrimay name="save" />
-					</form>
+					{isShowUpdate ? (
+						<RoleEdit
+							formik={formikUpdate}
+							errorsMessage={errorsMessage}
+							setErrorsMessage={setErrorsMessage}
+							setIsShowUpdate={setIsShowUpdate}
+							setRoleValue={setRoleValue}
+						/>
+					) : (
+						<RoleCreate
+							formik={formikStore}
+							errorsMessage={errorsMessage}
+							setErrorsMessage={setErrorsMessage}
+						/>
+					)}
 				</div>
 			</div>
 
@@ -31,6 +68,7 @@ function Role() {
 							className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
 							placeholder="Search"
 							type="text"
+							onChange={(e) => handleSearch(e.target.value)}
 						/>
 						<div className="flex w-[50px] items-center justify-center border-l-2">
 							<i className="fa-solid fa-magnifying-glass text-slate-700" />
@@ -46,55 +84,40 @@ function Role() {
 							</tr>
 						</thead>
 						<tbody>
-							<tr className="border-b border-slate-200">
-								<td>1</td>
-								<td>Super Admin</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
-							<tr className="border-b border-slate-200">
-								<td>2</td>
-								<td>Admin</td>
-								<td className="flex justify-center py-2">
-									<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-slate-500 text-white">
-										<i className="fa-solid fa-pencil" />
-									</div>
-
-									<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-red-500 text-white">
-										<i className="fa-regular fa-trash-can" />
-									</div>
-								</td>
-							</tr>
-							<tr className="border-b border-slate-200">
-								<td>3</td>
-								<td>Apoteker</td>
-								<td className="flex justify-center py-2">
-									<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-slate-500 text-white">
-										<i className="fa-solid fa-pencil" />
-									</div>
-
-									<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-red-500 text-white">
-										<i className="fa-regular fa-trash-can" />
-									</div>
-								</td>
-							</tr>
+							{roleList.map((role, index) => {
+								return (
+									<tr className="border-b border-slate-200" key={index}>
+										<td>{index + 1}</td>
+										<td className="capitalize">{role.name}</td>
+										<td className="flex justify-center py-2">
+											<div onClick={() => handleEdit(role)}>
+												<IconButtonEdit />
+											</div>
+											<div
+												onClick={() => {
+													setRoleValue({
+														roleId: role.role_id,
+														name: "",
+													});
+													setIsDangerAlert(true);
+												}}
+											>
+												<IconButtonDelete />
+											</div>
+										</td>
+									</tr>
+								);
+							})}
 						</tbody>
 					</table>
 
 					<div className="role__footer flex">
-						<div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-l-md border text-slate-700 hover:bg-slate-200">
-							<i className="fa-solid fa-angle-left text-slate-700" />
-						</div>
-
-						<div className="flex h-8 w-8 items-center justify-center border-t border-b text-slate-700">
-							<span>1</span>
-						</div>
-
-						<div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-r-md border text-slate-700 hover:bg-slate-200">
-							<i className="fa-solid fa-angle-right text-slate-700" />
-						</div>
+						<Pagination
+							page={page}
+							totalPage={totalPage}
+							handleNext={handleNext}
+							handlePrev={handlePrev}
+						/>
 					</div>
 				</div>
 			</div>
