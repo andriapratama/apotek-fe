@@ -57,7 +57,9 @@ export const DangerAlert = ({
 
 			<div
 				className={`fixed top-0 left-0 bottom-0 right-0 z-[99999] ${
-					isShowWarning ? "visible" : "invisible"
+					isShowWarning
+						? "scale-100 duration-300 ease-in-out"
+						: "scale-0 duration-300 ease-in-out"
 				}`}
 			>
 				<div className={`flex h-full w-full items-center justify-center`}>
@@ -96,7 +98,9 @@ export const DangerAlert = ({
 			</div>
 			<div
 				className={`fixed top-0 left-0 bottom-0 right-0 z-[99999] ${
-					isShowSuccess ? "visible" : "invisible"
+					isShowSuccess
+						? "scale-100 duration-300 ease-in-out"
+						: "scale-0 duration-300 ease-in-out"
 				}`}
 			>
 				<div className={`flex h-full w-full items-center justify-center`}>
@@ -121,7 +125,9 @@ export const DangerAlert = ({
 
 			<div
 				className={`fixed top-0 left-0 bottom-0 right-0 z-[99999] ${
-					isShowErrors ? "visible" : "invisible"
+					isShowErrors
+						? "scale-100 duration-300 ease-in-out"
+						: "scale-0 duration-300 ease-in-out"
 				}`}
 			>
 				<div className={`flex h-full w-full items-center justify-center`}>
