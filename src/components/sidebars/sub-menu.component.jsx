@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setPage } from "../../stores/reducers/pagination.reducer";
 
 function SubmenuComponent({ name, icon, link }) {
+	const dispatch = useDispatch();
+
 	return (
 		<NavLink
 			to={`${link}`}
@@ -9,6 +13,7 @@ function SubmenuComponent({ name, icon, link }) {
 					isActive ? "bg-white" : "bg-tranparent"
 				}`
 			}
+			onClick={() => dispatch(setPage(1))}
 		>
 			<div className="ml-8 w-[40px]">
 				<i className={`${icon} text-slate-500`} />
