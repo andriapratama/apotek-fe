@@ -10,7 +10,7 @@ function SubmenuComponent({ name, icon, link }) {
 			to={`${link}`}
 			className={({ isActive }) =>
 				`mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white ${
-					isActive ? "bg-white" : "bg-tranparent"
+					isActive ? "bg-white" : "bg-transparent"
 				}`
 			}
 			onClick={() => dispatch(setPage(1))}
