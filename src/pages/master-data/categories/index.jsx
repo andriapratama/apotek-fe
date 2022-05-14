@@ -1,26 +1,62 @@
-import { TextField } from "../../../components/form.field";
-import {
-	ButtonPrimay,
-	IconButtonDelete,
-	IconButtonEdit,
-} from "../../../components/button";
+import { IconButtonDelete, IconButtonEdit } from "../../../components/button";
+import { deleteCategoryDataApi } from "../../../api/category.api";
+import CategoryCreate from "./category.create";
+import CategoryEdit from "./category.edit";
+import { Pagination } from "../../../components/pagination";
+import { DangerAlert } from "../../../components/alert";
+import { useCategoryHook } from "./category.hook";
 
 function Category() {
+	const {
+		categoryList,
+		categoryValue,
+		setCategoryValue,
+		showAllCategoryData,
+		isDangerAlert,
+		setIsDangerAlert,
+		isShowUpdate,
+		setIsShowUpdate,
+		handleEdit,
+		errorsMessage,
+		setErrorsMessage,
+		formikStore,
+		formikUpdate,
+		totalPage,
+		handleNext,
+		handlePrev,
+		page,
+		handleSearch,
+	} = useCategoryHook();
 	return (
 		<section className="category min-h-[80vh] w-full">
+			<DangerAlert
+				id={categoryValue.categoryId}
+				deleteDataApi={deleteCategoryDataApi}
+				showAllData={showAllCategoryData}
+				isDangerAlert={isDangerAlert}
+				setIsDangerAlert={setIsDangerAlert}
+			/>
 			<div className="category__head mb-5">
 				<span className="text-2xl text-slate-600">Data Kategori Obat</span>
 			</div>
 
 			<div className="category__body mb-5 w-full rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-200">
 				<div className="p-5">
-					<form className="h-100 flex w-full items-center justify-start">
-						<div className="mr-5 w-[300px]">
-							<TextField placeholder="Input Category" />
-						</div>
-
-						<ButtonPrimay name="save" />
-					</form>
+					{isShowUpdate ? (
+						<CategoryEdit
+							formik={formikUpdate}
+							errorsMessage={errorsMessage}
+							setErrorsMessage={setErrorsMessage}
+							setIsShowUpdate={setIsShowUpdate}
+							setCategoryValue={setCategoryValue}
+						/>
+					) : (
+						<CategoryCreate
+							formik={formikStore}
+							errorsMessage={errorsMessage}
+							setErrorsMessage={setErrorsMessage}
+						/>
+					)}
 				</div>
 			</div>
 
@@ -31,6 +67,7 @@ function Category() {
 							className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
 							placeholder="Search"
 							type="text"
+							onChange={(e) => handleSearch(e.target.value)}
 						/>
 						<div className="flex w-[50px] items-center justify-center border-l-2">
 							<i className="fa-solid fa-magnifying-glass text-slate-700" />
@@ -46,45 +83,40 @@ function Category() {
 							</tr>
 						</thead>
 						<tbody>
-							<tr className="border-b border-slate-200">
-								<td>11</td>
-								<td>Cair</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
-							<tr className="border-b border-slate-200">
-								<td>12</td>
-								<td>Tablet</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
-							<tr className="border-b border-slate-200">
-								<td>13</td>
-								<td>Kapsul</td>
-								<td className="flex justify-center py-2">
-									<IconButtonEdit />
-									<IconButtonDelete />
-								</td>
-							</tr>
+							{categoryList.map((category, index) => {
+								return (
+									<tr className="border-b border-slate-200" key={index}>
+										<td>{index + 1}</td>
+										<td className="capitalize">{category.name}</td>
+										<td className="flex justify-center py-2">
+											<div onClick={() => handleEdit(category)}>
+												<IconButtonEdit />
+											</div>
+											<div
+												onClick={() => {
+													setCategoryValue({
+														categoryId: category.category_id,
+														name: "",
+													});
+													setIsDangerAlert(true);
+												}}
+											>
+												<IconButtonDelete />
+											</div>
+										</td>
+									</tr>
+								);
+							})}
 						</tbody>
 					</table>
 
 					<div className="category__footer flex">
-						<div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-l-md border text-slate-700 hover:bg-slate-200">
-							<i className="fa-solid fa-angle-left text-slate-700" />
-						</div>
-
-						<div className="flex h-8 w-8 items-center justify-center border-t border-b text-slate-700">
-							<span>1</span>
-						</div>
-
-						<div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-r-md border text-slate-700 hover:bg-slate-200">
-							<i className="fa-solid fa-angle-right text-slate-700" />
-						</div>
+						<Pagination
+							page={page}
+							totalPage={totalPage}
+							handleNext={handleNext}
+							handlePrev={handlePrev}
+						/>
 					</div>
 				</div>
 			</div>
