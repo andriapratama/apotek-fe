@@ -8,6 +8,9 @@ import Type from "./pages/master-data/types";
 import Group from "./pages/master-data/groups";
 import Brand from "./pages/master-data/brands";
 import Unit from "./pages/master-data/units";
+import AddProduct from "./pages/products/add-products";
+import ProductList from "./pages/products/product-lists";
+import StockOpname from "./pages/products/stock-opnames";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -38,6 +41,9 @@ function App() {
 								<Route path="/group" element={<Group />} />
 								<Route path="/brand" element={<Brand />} />
 								<Route path="/unit" element={<Unit />} />
+								<Route path="/product/add-product" element={<AddProduct />} />
+								<Route path="/product/product-list" element={<ProductList />} />
+								<Route path="/product/stock-opname" element={<StockOpname />} />
 							</Routes>
 						</div>
 					</div>

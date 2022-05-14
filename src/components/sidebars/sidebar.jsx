@@ -4,6 +4,7 @@ import SubmenuComponent from "./sub-menu.component";
 
 function Sidebar({ isShowSidebar }) {
 	const [isShowMasterData, setIsShowMasterData] = useState(false);
+	const [isShowProduct, setIsShowProduct] = useState(false);
 	return (
 		<section
 			className={`h-[100vh] w-2/12 bg-slate-200 ${
@@ -32,30 +33,67 @@ function Sidebar({ isShowSidebar }) {
 								icon="fa-solid fa-shapes"
 								link="/role"
 							/>
+
 							<SubmenuComponent
 								name="Kategori obat"
 								icon="fa-solid fa-shapes"
 								link="/category"
 							/>
+
 							<SubmenuComponent
 								name="Jenis obat"
 								icon="fa-solid fa-shapes"
 								link="/type"
 							/>
+
 							<SubmenuComponent
 								name="Golongan obat"
 								icon="fa-solid fa-shapes"
 								link="/group"
 							/>
+
 							<SubmenuComponent
 								name="Merk obat"
 								icon="fa-solid fa-shapes"
 								link="/brand"
 							/>
+
 							<SubmenuComponent
 								name="Satuan obat"
 								icon="fa-solid fa-shapes"
 								link="/unit"
+							/>
+						</div>
+					</div>
+
+					<div className="product relative">
+						<MenuComponent
+							name="Product"
+							icon="fa-solid fa-capsules"
+							state={isShowProduct}
+							setState={setIsShowProduct}
+						/>
+						<div
+							className={
+								isShowProduct ? "visible relative" : "invisible absolute"
+							}
+						>
+							<SubmenuComponent
+								name="Product List"
+								icon="fa-solid fa-list"
+								link="/product/product-list"
+							/>
+
+							<SubmenuComponent
+								name="Add Product"
+								icon="fa-solid fa-plus"
+								link="/product/add-product"
+							/>
+
+							<SubmenuComponent
+								name="Stock Opname"
+								icon="fa-solid fa-gear"
+								link="/product/stock-opname"
 							/>
 						</div>
 					</div>
