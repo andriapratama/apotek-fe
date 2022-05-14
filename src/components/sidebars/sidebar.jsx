@@ -5,9 +5,11 @@ import SubmenuComponent from "./sub-menu.component";
 function Sidebar({ isShowSidebar }) {
 	const [isShowMasterData, setIsShowMasterData] = useState(false);
 	const [isShowProduct, setIsShowProduct] = useState(false);
+	const [isShowSupplier, setIsShowSupplier] = useState(false);
+
 	return (
 		<section
-			className={`h-[100vh] w-2/12 bg-slate-200 ${
+			className={`h-[93vh] overflow-scroll bg-slate-200 ${
 				isShowSidebar
 					? "absolute -translate-x-[300px] duration-300 ease-in-out"
 					: "relative translate-x-0 duration-300 ease-in-out"
@@ -94,6 +96,32 @@ function Sidebar({ isShowSidebar }) {
 								name="Stock Opname"
 								icon="fa-solid fa-gear"
 								link="/product/stock-opname"
+							/>
+						</div>
+					</div>
+
+					<div className="product relative">
+						<MenuComponent
+							name="Supplier"
+							icon="fa-solid fa-shop"
+							state={isShowSupplier}
+							setState={setIsShowSupplier}
+						/>
+						<div
+							className={
+								isShowSupplier ? "visible relative" : "invisible absolute"
+							}
+						>
+							<SubmenuComponent
+								name="Supplier List"
+								icon="fa-solid fa-list"
+								link="/supplier/supplier-list"
+							/>
+
+							<SubmenuComponent
+								name="Add Supplier"
+								icon="fa-solid fa-plus"
+								link="/supplier/add-supplier"
 							/>
 						</div>
 					</div>
