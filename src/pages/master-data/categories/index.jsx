@@ -86,7 +86,7 @@ function Category() {
 							{categoryList.map((category, index) => {
 								return (
 									<tr className="border-b border-slate-200" key={index}>
-										<td>{index + 1}</td>
+										<td>{category.category_id}</td>
 										<td className="capitalize">{category.name}</td>
 										<td className="flex justify-center py-2">
 											<div onClick={() => handleEdit(category)}>
