@@ -8,6 +8,7 @@ import Type from "./pages/master-data/types";
 import Group from "./pages/master-data/groups";
 import Brand from "./pages/master-data/brands";
 import Unit from "./pages/master-data/units";
+import Location from "./pages/master-data/locations";
 import AddProduct from "./pages/products/add-products";
 import ProductList from "./pages/products/product-lists";
 import StockOpname from "./pages/products/stock-opnames";
@@ -38,19 +39,22 @@ function App() {
 					>
 						<div className="mt-8 flex w-[95%] justify-center">
 							<Routes>
-								<Route path="/role" element={<Role />} />
-								<Route path="/category" element={<Category />} />
-								<Route path="/type" element={<Type />} />
-								<Route path="/group" element={<Group />} />
-								<Route path="/brand" element={<Brand />} />
-								<Route path="/unit" element={<Unit />} />
-								<Route path="/product/add-product" element={<AddProduct />} />
-								<Route path="/product/product-list" element={<ProductList />} />
-								<Route path="/product/stock-opname" element={<StockOpname />} />
+								<Route path="/master-data/role" element={<Role />} />
+								<Route path="/master-data/category" element={<Category />} />
+								<Route path="/master-data/type" element={<Type />} />
+								<Route path="/master-data/group" element={<Group />} />
+								<Route path="/master-data/brand" element={<Brand />} />
+								<Route path="/master-data/unit" element={<Unit />} />
+								<Route path="/master-data/location" element={<Location />} />
+
 								<Route
 									path="/supplier/supplier-list"
 									element={<SupplierList />}
 								/>
+
+								<Route path="/product/add-product" element={<AddProduct />} />
+								<Route path="/product/product-list" element={<ProductList />} />
+								<Route path="/product/stock-opname" element={<StockOpname />} />
 							</Routes>
 						</div>
 					</div>
