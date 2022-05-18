@@ -11,8 +11,7 @@ import Unit from "./pages/master-data/units";
 import AddProduct from "./pages/products/add-products";
 import ProductList from "./pages/products/product-lists";
 import StockOpname from "./pages/products/stock-opnames";
-import AddSupplier from "./pages/suppliers/add-suppliers";
-import SupplierList from "./pages/suppliers/supplier-lists";
+import SupplierList from "./pages/suppliers";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -48,10 +47,6 @@ function App() {
 								<Route path="/product/add-product" element={<AddProduct />} />
 								<Route path="/product/product-list" element={<ProductList />} />
 								<Route path="/product/stock-opname" element={<StockOpname />} />
-								<Route
-									path="/supplier/add-supplier"
-									element={<AddSupplier />}
-								/>
 								<Route
 									path="/supplier/supplier-list"
 									element={<SupplierList />}
