@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import MenuComponent from "./menu.component";
 import SubmenuComponent from "./sub-menu.component";
 
 function Sidebar({ isShowSidebar }) {
 	const [isShowMasterData, setIsShowMasterData] = useState(false);
 	const [isShowProduct, setIsShowProduct] = useState(false);
-	const [isShowSupplier, setIsShowSupplier] = useState(false);
 
 	return (
 		<section
@@ -100,30 +100,23 @@ function Sidebar({ isShowSidebar }) {
 						</div>
 					</div>
 
-					<div className="product relative">
-						<MenuComponent
-							name="Supplier"
-							icon="fa-solid fa-shop"
-							state={isShowSupplier}
-							setState={setIsShowSupplier}
-						/>
-						<div
-							className={
-								isShowSupplier ? "visible relative" : "invisible absolute"
+					<div className="supplier relative">
+						<NavLink
+							to="/supplier/supplier-list"
+							className={({ isActive }) =>
+								`mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white ${
+									isActive ? "bg-white" : "bg-transparent"
+								}`
 							}
 						>
-							<SubmenuComponent
-								name="Supplier List"
-								icon="fa-solid fa-list"
-								link="/supplier/supplier-list"
-							/>
+							<div className="ml-4 w-[40px]">
+								<i className={`fa-solid fa-shop text-slate-500`} />
+							</div>
 
-							<SubmenuComponent
-								name="Add Supplier"
-								icon="fa-solid fa-plus"
-								link="/supplier/add-supplier"
-							/>
-						</div>
+							<div className="w-[160px]">
+								<span className="text-slate-500">Supplier</span>
+							</div>
+						</NavLink>
 					</div>
 				</div>
 			</div>
