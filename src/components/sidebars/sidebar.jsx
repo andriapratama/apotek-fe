@@ -33,37 +33,43 @@ function Sidebar({ isShowSidebar }) {
 							<SubmenuComponent
 								name="Role"
 								icon="fa-solid fa-shapes"
-								link="/role"
+								link="/master-data/role"
 							/>
 
 							<SubmenuComponent
 								name="Kategori obat"
 								icon="fa-solid fa-shapes"
-								link="/category"
+								link="/master-data/category"
 							/>
 
 							<SubmenuComponent
 								name="Jenis obat"
 								icon="fa-solid fa-shapes"
-								link="/type"
+								link="/master-data/type"
 							/>
 
 							<SubmenuComponent
 								name="Golongan obat"
 								icon="fa-solid fa-shapes"
-								link="/group"
+								link="/master-data/group"
 							/>
 
 							<SubmenuComponent
 								name="Merk obat"
 								icon="fa-solid fa-shapes"
-								link="/brand"
+								link="/master-data/brand"
 							/>
 
 							<SubmenuComponent
 								name="Satuan obat"
 								icon="fa-solid fa-shapes"
-								link="/unit"
+								link="/master-data/unit"
+							/>
+
+							<SubmenuComponent
+								name="Lokasi"
+								icon="fa-solid fa-shapes"
+								link="/master-data/location"
 							/>
 						</div>
 					</div>
