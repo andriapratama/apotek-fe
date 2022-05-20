@@ -34,6 +34,8 @@ export const useSupplierHook = () => {
 			await storeSupplierDataApi(values.name, values.phone, values.address);
 
 			setIsShowCreate(false);
+			showAllSupplierData();
+
 			setTimeout(() => {
 				formikStore.resetForm();
 			}, 200);
