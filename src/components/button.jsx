@@ -50,10 +50,42 @@ export const IconButtonEdit = () => {
 	);
 };
 
+export const IconButtonEditSm = () => {
+	return (
+		<div className="mr-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-md bg-slate-500 text-white">
+			<i className="fa-solid fa-pencil text-xs" />
+		</div>
+	);
+};
+
 export const IconButtonDelete = () => {
 	return (
 		<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-red-500 text-white">
 			<i className="fa-regular fa-trash-can" />
+		</div>
+	);
+};
+
+export const IconButtonDeleteSm = () => {
+	return (
+		<div className="mr-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-md bg-red-500 text-white">
+			<i className="fa-regular fa-trash-can text-xs" />
+		</div>
+	);
+};
+
+export const IconButtonDetail = () => {
+	return (
+		<div className="mx-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-sm bg-sky-500 text-white">
+			<i className="fa-regular fa-eye" />
+		</div>
+	);
+};
+
+export const IconButtonDetailSm = () => {
+	return (
+		<div className="mr-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-md bg-sky-500 text-white">
+			<i className="fa-regular fa-eye text-xs" />
 		</div>
 	);
 };
