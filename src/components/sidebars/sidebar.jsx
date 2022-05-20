@@ -5,7 +5,6 @@ import SubmenuComponent from "./sub-menu.component";
 
 function Sidebar({ isShowSidebar }) {
 	const [isShowMasterData, setIsShowMasterData] = useState(false);
-	const [isShowProduct, setIsShowProduct] = useState(false);
 
 	return (
 		<section
@@ -75,35 +74,22 @@ function Sidebar({ isShowSidebar }) {
 					</div>
 
 					<div className="product relative">
-						<MenuComponent
-							name="Product"
-							icon="fa-solid fa-capsules"
-							state={isShowProduct}
-							setState={setIsShowProduct}
-						/>
-						<div
-							className={
-								isShowProduct ? "visible relative" : "invisible absolute"
+						<NavLink
+							to="/product/product-list"
+							className={({ isActive }) =>
+								`mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white ${
+									isActive ? "bg-white" : "bg-transparent"
+								}`
 							}
 						>
-							<SubmenuComponent
-								name="Product List"
-								icon="fa-solid fa-list"
-								link="/product/product-list"
-							/>
+							<div className="ml-4 w-[40px]">
+								<i className={`fa-solid fa-capsules text-slate-500`} />
+							</div>
 
-							<SubmenuComponent
-								name="Add Product"
-								icon="fa-solid fa-plus"
-								link="/product/add-product"
-							/>
-
-							<SubmenuComponent
-								name="Stock Opname"
-								icon="fa-solid fa-gear"
-								link="/product/stock-opname"
-							/>
-						</div>
+							<div className="w-[160px]">
+								<span className="text-slate-500">Product</span>
+							</div>
+						</NavLink>
 					</div>
 
 					<div className="supplier relative">
