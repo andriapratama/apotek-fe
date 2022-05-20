@@ -120,7 +120,7 @@ export const useUnitHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchUnit = async (search) => {
 		if (search === "") {
 			showAllUnitData();
 		} else {
@@ -149,6 +149,6 @@ export const useUnitHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchUnit,
 	};
 };

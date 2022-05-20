@@ -120,7 +120,7 @@ export const useBrandHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchBrand = async (search) => {
 		if (search === "") {
 			showAllBrandData();
 		} else {
@@ -149,6 +149,6 @@ export const useBrandHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchBrand,
 	};
 };

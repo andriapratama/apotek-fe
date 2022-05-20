@@ -120,7 +120,7 @@ export const useLocationHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchLocation = async (search) => {
 		if (search === "") {
 			showAllLocationData();
 		} else {
@@ -149,6 +149,6 @@ export const useLocationHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchLocation,
 	};
 };

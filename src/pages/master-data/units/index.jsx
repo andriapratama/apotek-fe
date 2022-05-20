@@ -25,7 +25,7 @@ function Unit() {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchUnit,
 	} = useUnitHook();
 	return (
 		<section className="unit min-h-[80vh] w-full">
@@ -70,7 +70,7 @@ function Unit() {
 							className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
 							placeholder="Search"
 							unit="text"
-							onChange={(e) => handleSearch(e.target.value)}
+							onChange={(e) => handleSearchUnit(e.target.value)}
 						/>
 						<div className="flex w-[50px] items-center justify-center border-l-2">
 							<i className="fa-solid fa-magnifying-glass text-slate-700" />

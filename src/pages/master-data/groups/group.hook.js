@@ -120,7 +120,7 @@ export const useGroupHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchGroup = async (search) => {
 		if (search === "") {
 			showAllGroupData();
 		} else {
@@ -149,6 +149,6 @@ export const useGroupHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchGroup,
 	};
 };

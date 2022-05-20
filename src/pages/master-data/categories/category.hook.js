@@ -120,7 +120,7 @@ export const useCategoryHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchCategory = async (search) => {
 		if (search === "") {
 			showAllCategoryData();
 		} else {
@@ -149,6 +149,6 @@ export const useCategoryHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchCategory,
 	};
 };

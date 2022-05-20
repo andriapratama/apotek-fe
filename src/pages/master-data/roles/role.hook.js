@@ -120,7 +120,7 @@ export const useRoleHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchRole = async (search) => {
 		if (search === "") {
 			showAllRoleData();
 		} else {
@@ -149,6 +149,6 @@ export const useRoleHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchRole,
 	};
 };

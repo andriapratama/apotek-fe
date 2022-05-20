@@ -120,7 +120,7 @@ export const useTypeHook = () => {
 	//Pagination End
 
 	//Feature Search Start
-	const handleSearch = async (search) => {
+	const handleSearchType = async (search) => {
 		if (search === "") {
 			showAllTypeData();
 		} else {
@@ -149,6 +149,6 @@ export const useTypeHook = () => {
 		handleNext,
 		handlePrev,
 		page,
-		handleSearch,
+		handleSearchType,
 	};
 };
