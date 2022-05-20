@@ -95,32 +95,34 @@ function SupplierList() {
 						<tbody>
 							{supplierList.map((supplier, index) => {
 								return (
-									<tr className="border-b border-slate-200" key={index}>
+									<tr className="h-auto border-b border-slate-200" key={index}>
 										<td className="text-center">{index + 1}</td>
-										<td className="text-left">{supplier.name}</td>
+										<td className="w-[380px] text-left">{supplier.name}</td>
 										<td className="text-left">{supplier.phone}</td>
-										<td className="text-left">{supplier.address}</td>
-										<td className="flex justify-center py-2">
-											<div
-												onClick={() => {
-													handleEdit(supplier);
-												}}
-											>
-												<IconButtonEdit />
-											</div>
+										<td className="w-[380px] text-left">{supplier.address}</td>
+										<td className="flex h-full justify-center py-2">
+											<div className="flex h-full items-center">
+												<div
+													onClick={() => {
+														handleEdit(supplier);
+													}}
+												>
+													<IconButtonEdit />
+												</div>
 
-											<div
-												onClick={() => {
-													setSupplierValue({
-														supplierId: supplier.supplier_id,
-														name: "",
-														phone: "",
-														address: "",
-													});
-													setIsDangerAlert(true);
-												}}
-											>
-												<IconButtonDelete />
+												<div
+													onClick={() => {
+														setSupplierValue({
+															supplierId: supplier.supplier_id,
+															name: "",
+															phone: "",
+															address: "",
+														});
+														setIsDangerAlert(true);
+													}}
+												>
+													<IconButtonDelete />
+												</div>
 											</div>
 										</td>
 									</tr>
