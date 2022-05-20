@@ -9,10 +9,10 @@ import Group from "./pages/master-data/groups";
 import Brand from "./pages/master-data/brands";
 import Unit from "./pages/master-data/units";
 import Location from "./pages/master-data/locations";
-import AddProduct from "./pages/products/add-products";
-import ProductList from "./pages/products/product-lists";
-import StockOpname from "./pages/products/stock-opnames";
 import SupplierList from "./pages/suppliers";
+import ProductList from "./pages/products";
+import ProductCreate from "./pages/products/product.create";
+import Testing from "./pages/products/testing";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -52,9 +52,12 @@ function App() {
 									element={<SupplierList />}
 								/>
 
-								<Route path="/product/add-product" element={<AddProduct />} />
 								<Route path="/product/product-list" element={<ProductList />} />
-								<Route path="/product/stock-opname" element={<StockOpname />} />
+								<Route
+									path="/product/product-create"
+									element={<ProductCreate />}
+								/>
+								<Route path="/product/testing" element={<Testing />} />
 							</Routes>
 						</div>
 					</div>
