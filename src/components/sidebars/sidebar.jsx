@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import MenuComponent from "./menu.component";
+import MenuDropdownComponent from "./menu-dropdown.component";
 import SubmenuComponent from "./sub-menu.component";
 
 function Sidebar({ isShowSidebar }) {
@@ -17,7 +17,7 @@ function Sidebar({ isShowSidebar }) {
 			<div className="sidebar__body w-full">
 				<div className="mt-10">
 					<div className="master-data relative">
-						<MenuComponent
+						<MenuDropdownComponent
 							name="Master Data"
 							icon="fa-solid fa-database"
 							state={isShowMasterData}
@@ -73,43 +73,17 @@ function Sidebar({ isShowSidebar }) {
 						</div>
 					</div>
 
-					<div className="product relative">
-						<NavLink
-							to="/product/product-list"
-							className={({ isActive }) =>
-								`mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white ${
-									isActive ? "bg-white" : "bg-transparent"
-								}`
-							}
-						>
-							<div className="ml-4 w-[40px]">
-								<i className={`fa-solid fa-capsules text-slate-500`} />
-							</div>
+					<MenuComponent
+						name="Product"
+						icon="fa-solid fa-capsules"
+						link="/product/product-list"
+					/>
 
-							<div className="w-[160px]">
-								<span className="text-slate-500">Product</span>
-							</div>
-						</NavLink>
-					</div>
-
-					<div className="supplier relative">
-						<NavLink
-							to="/supplier/supplier-list"
-							className={({ isActive }) =>
-								`mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white ${
-									isActive ? "bg-white" : "bg-transparent"
-								}`
-							}
-						>
-							<div className="ml-4 w-[40px]">
-								<i className={`fa-solid fa-shop text-slate-500`} />
-							</div>
-
-							<div className="w-[160px]">
-								<span className="text-slate-500">Supplier</span>
-							</div>
-						</NavLink>
-					</div>
+					<MenuComponent
+						name="Supplier"
+						icon="fa-solid fa-shop"
+						link="/supplier/supplier-list"
+					/>
 				</div>
 			</div>
 		</section>

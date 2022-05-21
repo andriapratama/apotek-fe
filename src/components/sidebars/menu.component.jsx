@@ -1,8 +1,19 @@
-function MenuComponent({ name, icon, state, setState }) {
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setPageRedux } from "../../stores/reducers/pagination.reducer";
+
+function MenuComponent({ name, icon, link }) {
+	const dispatch = useDispatch();
+
 	return (
-		<div
-			className="mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white"
-			onClick={() => setState(!state)}
+		<NavLink
+			to={`${link}`}
+			className={({ isActive }) =>
+				`mb-1 flex h-[40px] w-full cursor-pointer items-center hover:bg-white ${
+					isActive ? "bg-white" : "bg-transparent"
+				}`
+			}
+			onClick={() => dispatch(setPageRedux(1))}
 		>
 			<div className="ml-4 w-[40px]">
 				<i className={`${icon} text-slate-500`} />
@@ -11,15 +22,7 @@ function MenuComponent({ name, icon, state, setState }) {
 			<div className="w-[160px]">
 				<span className="text-slate-500">{name}</span>
 			</div>
-
-			<div className="w-auto">
-				{state ? (
-					<i className="fa-solid fa-angle-down text-slate-500" />
-				) : (
-					<i className="fa-solid fa-angle-right text-slate-500" />
-				)}
-			</div>
-		</div>
+		</NavLink>
 	);
 }
 
