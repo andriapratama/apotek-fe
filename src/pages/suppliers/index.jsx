@@ -29,6 +29,7 @@ function SupplierList() {
 		showAllSupplierData,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		totalPage,
 		handleSearch,
@@ -135,6 +136,7 @@ function SupplierList() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

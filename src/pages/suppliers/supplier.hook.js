@@ -9,7 +9,11 @@ import {
 } from "../../api/supplier.api";
 import { validation } from "./supplier.validation";
 import { store } from "../../stores";
-import { nextPage, prevPage } from "../../stores/reducers/pagination.reducer";
+import {
+	nextPageRedux,
+	prevPageRedux,
+	setPageRedux,
+} from "../../stores/reducers/pagination.reducer";
 
 export const useSupplierHook = () => {
 	const dispatch = useDispatch();
@@ -113,8 +117,16 @@ export const useSupplierHook = () => {
 	//Edit Supplier Data End
 
 	//Pagination Start
+	const handleSetPage = async (i) => {
+		dispatch(setPageRedux(i));
+		setPage(i);
+		const supplier = await findAllSupplierDataApi(i);
+
+		setSupplierList(supplier.data.data.supplier.rows);
+	};
+
 	const handleNext = async () => {
-		dispatch(nextPage());
+		dispatch(nextPageRedux());
 		setPage(pageRedux + 1);
 		const supplier = await findAllSupplierDataApi(page + 1);
 
@@ -122,7 +134,7 @@ export const useSupplierHook = () => {
 	};
 
 	const handlePrev = async () => {
-		dispatch(prevPage());
+		dispatch(prevPageRedux());
 		setPage(pageRedux - 1);
 		const supplier = await findAllSupplierDataApi(page - 1);
 
@@ -160,6 +172,7 @@ export const useSupplierHook = () => {
 		showAllSupplierData,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		totalPage,
 		handleSearch,
