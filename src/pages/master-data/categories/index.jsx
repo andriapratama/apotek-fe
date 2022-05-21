@@ -24,6 +24,7 @@ function Category() {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchCategory,
 	} = useCategoryHook();
@@ -114,6 +115,7 @@ function Category() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

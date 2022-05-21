@@ -24,6 +24,7 @@ function Role() {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchRole,
 	} = useRoleHook();
@@ -115,6 +116,7 @@ function Role() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

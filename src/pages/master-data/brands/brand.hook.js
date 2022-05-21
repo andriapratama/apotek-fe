@@ -9,8 +9,9 @@ import {
 import { validation } from "./brand.validation";
 import { useDispatch } from "react-redux";
 import {
-	nextPage,
-	prevPage,
+	nextPageRedux,
+	prevPageRedux,
+	setPageRedux,
 } from "../../../stores/reducers/pagination.reducer";
 import { store } from "../../../stores";
 
@@ -102,8 +103,16 @@ export const useBrandHook = () => {
 	//Edit Brand Data End
 
 	//Pagination Start
+	const handleSetPage = async (i) => {
+		dispatch(setPageRedux(i));
+		setPage(i);
+		const brand = await findAllBrandDataApi(i);
+
+		setBrandList(brand.data.data.brand.rows);
+	};
+
 	const handleNext = async () => {
-		dispatch(nextPage());
+		dispatch(nextPageRedux());
 		setPage(pageRedux + 1);
 		const brand = await findAllBrandDataApi(page + 1);
 
@@ -111,7 +120,7 @@ export const useBrandHook = () => {
 	};
 
 	const handlePrev = async () => {
-		dispatch(prevPage());
+		dispatch(prevPageRedux());
 		setPage(pageRedux - 1);
 		const brand = await findAllBrandDataApi(page - 1);
 
@@ -148,6 +157,7 @@ export const useBrandHook = () => {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchBrand,
 	};

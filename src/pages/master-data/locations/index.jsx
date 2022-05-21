@@ -24,6 +24,7 @@ function Location() {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchLocation,
 	} = useLocationHook();
@@ -115,6 +116,7 @@ function Location() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

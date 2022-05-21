@@ -24,6 +24,7 @@ function Brand() {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchBrand,
 	} = useBrandHook();
@@ -115,6 +116,7 @@ function Brand() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

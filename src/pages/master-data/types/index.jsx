@@ -24,6 +24,7 @@ function Type() {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchType,
 	} = useTypeHook();
@@ -114,6 +115,7 @@ function Type() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

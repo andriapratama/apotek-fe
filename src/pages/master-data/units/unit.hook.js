@@ -9,8 +9,9 @@ import {
 import { validation } from "./unit.validation";
 import { useDispatch } from "react-redux";
 import {
-	nextPage,
-	prevPage,
+	nextPageRedux,
+	prevPageRedux,
+	setPageRedux,
 } from "../../../stores/reducers/pagination.reducer";
 import { store } from "../../../stores";
 
@@ -102,8 +103,16 @@ export const useUnitHook = () => {
 	//Edit Unit Data End
 
 	//Pagination Start
+	const handleSetPage = async (i) => {
+		dispatch(setPageRedux(i));
+		setPage(i);
+		const unit = await findAllUnitDataApi(i);
+
+		setUnitList(unit.data.data.unit.rows);
+	};
+
 	const handleNext = async () => {
-		dispatch(nextPage());
+		dispatch(nextPageRedux());
 		setPage(pageRedux + 1);
 		const unit = await findAllUnitDataApi(page + 1);
 
@@ -111,7 +120,7 @@ export const useUnitHook = () => {
 	};
 
 	const handlePrev = async () => {
-		dispatch(prevPage());
+		dispatch(prevPageRedux());
 		setPage(pageRedux - 1);
 		const unit = await findAllUnitDataApi(page - 1);
 
@@ -148,6 +157,7 @@ export const useUnitHook = () => {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchUnit,
 	};

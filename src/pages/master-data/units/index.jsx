@@ -24,6 +24,7 @@ function Unit() {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchUnit,
 	} = useUnitHook();
@@ -117,6 +118,7 @@ function Unit() {
 						<Pagination
 							page={page}
 							totalPage={totalPage}
+							handleSetPage={handleSetPage}
 							handleNext={handleNext}
 							handlePrev={handlePrev}
 						/>

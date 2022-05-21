@@ -9,8 +9,9 @@ import { validation } from "./role.validation";
 import { storeRoleDataApi } from "../../../api/role.api";
 import { useDispatch } from "react-redux";
 import {
-	nextPage,
-	prevPage,
+	nextPageRedux,
+	prevPageRedux,
+	setPageRedux,
 } from "../../../stores/reducers/pagination.reducer";
 import { store } from "../../../stores";
 
@@ -102,8 +103,15 @@ export const useRoleHook = () => {
 	//Edit Role Data End
 
 	//Pagination Start
+	const handleSetPage = async (i) => {
+		dispatch(setPageRedux(i));
+		setPage(i);
+		const role = await findAllRoleDataApi(i);
+
+		setRoleList(role.data.data.role.rows);
+	};
 	const handleNext = async () => {
-		dispatch(nextPage());
+		dispatch(nextPageRedux());
 		setPage(pageRedux + 1);
 		const role = await findAllRoleDataApi(page + 1);
 
@@ -111,7 +119,7 @@ export const useRoleHook = () => {
 	};
 
 	const handlePrev = async () => {
-		dispatch(prevPage());
+		dispatch(prevPageRedux());
 		setPage(pageRedux - 1);
 		const role = await findAllRoleDataApi(page - 1);
 
@@ -148,6 +156,7 @@ export const useRoleHook = () => {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchRole,
 	};

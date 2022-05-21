@@ -9,8 +9,9 @@ import {
 import { validation } from "./location.validation";
 import { useDispatch } from "react-redux";
 import {
-	nextPage,
-	prevPage,
+	nextPageRedux,
+	prevPageRedux,
+	setPageRedux,
 } from "../../../stores/reducers/pagination.reducer";
 import { store } from "../../../stores";
 
@@ -102,8 +103,16 @@ export const useLocationHook = () => {
 	//Edit Location Data End
 
 	//Pagination Start
+	const handleSetPage = async (i) => {
+		dispatch(setPageRedux(i));
+		setPage(i);
+		const location = await findAllLocationDataApi(i);
+
+		setLocationList(location.data.data.location.rows);
+	};
+
 	const handleNext = async () => {
-		dispatch(nextPage());
+		dispatch(nextPageRedux());
 		setPage(pageRedux + 1);
 		const location = await findAllLocationDataApi(page + 1);
 
@@ -111,7 +120,7 @@ export const useLocationHook = () => {
 	};
 
 	const handlePrev = async () => {
-		dispatch(prevPage());
+		dispatch(prevPageRedux());
 		setPage(pageRedux - 1);
 		const location = await findAllLocationDataApi(page - 1);
 
@@ -148,6 +157,7 @@ export const useLocationHook = () => {
 		totalPage,
 		handleNext,
 		handlePrev,
+		handleSetPage,
 		page,
 		handleSearchLocation,
 	};
