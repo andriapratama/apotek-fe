@@ -6,18 +6,19 @@ export const PaginationSlice = createSlice({
 		page: 1,
 	},
 	reducers: {
-		setPage: (state) => {
-			state.page = 1;
+		setPageRedux: (state, action) => {
+			state.page = action.payload;
 		},
-		nextPage: (state) => {
+		nextPageRedux: (state) => {
 			state.page = state.page + 1;
 		},
-		prevPage: (state) => {
+		prevPageRedux: (state) => {
 			state.page = state.page - 1;
 		},
 	},
 });
 
-export const { setPage, nextPage, prevPage } = PaginationSlice.actions;
+export const { setPageRedux, nextPageRedux, prevPageRedux } =
+	PaginationSlice.actions;
 
 export default PaginationSlice.reducer;
