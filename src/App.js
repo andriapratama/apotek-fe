@@ -12,7 +12,7 @@ import Location from "./pages/master-data/locations";
 import SupplierList from "./pages/suppliers";
 import ProductList from "./pages/products";
 import ProductCreate from "./pages/products/product.create";
-import Testing from "./pages/products/testing";
+import ProductDetail from "./pages/products/product-details";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -57,7 +57,10 @@ function App() {
 									path="/product/product-create"
 									element={<ProductCreate />}
 								/>
-								<Route path="/product/testing" element={<Testing />} />
+								<Route
+									path="/product/product-detail"
+									element={<ProductDetail />}
+								/>
 							</Routes>
 						</div>
 					</div>
