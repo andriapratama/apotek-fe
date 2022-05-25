@@ -13,6 +13,8 @@ import SupplierList from "./pages/suppliers";
 import ProductList from "./pages/products";
 import ProductCreate from "./pages/products/product.create";
 import ProductDetail from "./pages/products/product-details";
+import TransactionList from "./pages/transactions";
+import Cashier from "./pages/cashiers";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -61,6 +63,13 @@ function App() {
 									path="/product/product-detail"
 									element={<ProductDetail />}
 								/>
+
+								<Route
+									path="/transaction/transaction-list"
+									element={<TransactionList />}
+								/>
+
+								<Route path="/cashier" element={<Cashier />} />
 							</Routes>
 						</div>
 					</div>
