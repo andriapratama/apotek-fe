@@ -84,6 +84,18 @@ function Sidebar({ isShowSidebar }) {
 						icon="fa-solid fa-shop"
 						link="/supplier/supplier-list"
 					/>
+
+					<MenuComponent
+						name="Transaction"
+						icon="fa-solid fa-receipt ml-1"
+						link="/transaction/transaction-list"
+					/>
+
+					<MenuComponent
+						name="Cashier"
+						icon="fa-solid fa-cart-shopping"
+						link="/cashier"
+					/>
 				</div>
 			</div>
 		</section>
