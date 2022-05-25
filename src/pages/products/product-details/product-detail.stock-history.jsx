@@ -4,7 +4,8 @@ import "moment/locale/id";
 import { useProductHook } from "../product.hook";
 import { useProductDetailHook } from "./product-detail.hook";
 import { PaginationStock } from "../../../components/pagination";
-function StockHistory({ productValue }) {
+
+function StockHistory() {
 	const navigate = useNavigate();
 
 	const { formatterStock } = useProductHook();
@@ -65,7 +66,7 @@ function StockHistory({ productValue }) {
 														<span>
 															{stock.description}, transaction code{" "}
 															<span
-																className="cursor-pointer hover:text-sky-800"
+																className="cursor-pointer font-semibold hover:text-sky-500"
 																onClick={() => {
 																	navigate(
 																		`/product/product/${stock.transaction_code}`
@@ -83,6 +84,7 @@ function StockHistory({ productValue }) {
 												<span>
 													{stock.description}, transaction code{" "}
 													<span
+														className="cursor-pointer font-semibold hover:text-blue-500"
 														onClick={() => {
 															navigate(
 																`/product/product/${stock.transaction_code}`
@@ -96,6 +98,7 @@ function StockHistory({ productValue }) {
 												<span>
 													{stock.description}, number transaction{" "}
 													<span
+														className="cursor-pointer font-semibold hover:text-blue-500"
 														onClick={() => {
 															navigate(
 																`/product/product/${stock.transaction_code}`
