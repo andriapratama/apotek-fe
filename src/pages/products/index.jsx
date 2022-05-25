@@ -78,7 +78,7 @@ function ProductList() {
 									Kategori
 								</th>
 								<th className="border-r-2 border-slate-400 py-2 pl-2 text-left">
-									Supplier
+									Merk
 								</th>
 								<th className="border-r-2 border-slate-400 py-2 pl-2 text-left">
 									Lokasi
@@ -92,7 +92,9 @@ function ProductList() {
 							{productList.map((product, index) => {
 								return (
 									<tr
-										className="border-b-2 border-r-2 border-slate-400"
+										className={`border-b-2 border-r-2 border-slate-400 ${
+											index % 2 === 0 ? "bg-slate-200" : "bg-white"
+										}`}
 										key={index}
 									>
 										<td className="border-r-2 border-l-2 border-slate-400 py-2 px-2 text-left">
@@ -116,10 +118,8 @@ function ProductList() {
 										<td className="border-r-2 border-slate-400 py-2 px-2 text-left capitalize">
 											{product.category.name}
 										</td>
-										<td className="border-r-2 border-slate-400 py-2 px-2 text-left">
-											{product.product_suppliers.map((supplier, idx) => {
-												return <div key={idx}>{supplier.name}</div>;
-											})}
+										<td className="border-r-2 border-slate-400 py-2 px-2 text-left capitalize">
+											{product.brand.name}
 										</td>
 										<td className="border-r-2 border-slate-400 py-2 px-2 text-left capitalize">
 											{product.product_locations.map((location, idx) => {
