@@ -66,6 +66,14 @@ export const IconButtonDelete = () => {
 	);
 };
 
+export const IconButtonDeleteMd = () => {
+	return (
+		<div className="mr-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-md bg-red-500 text-white">
+			<i className="fa-regular fa-trash-can text-xs" />
+		</div>
+	);
+};
+
 export const IconButtonDeleteSm = () => {
 	return (
 		<div className="mr-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-md bg-red-500 text-white">
@@ -86,6 +94,30 @@ export const IconButtonDetailSm = () => {
 	return (
 		<div className="mr-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-md bg-sky-500 text-white">
 			<i className="fa-regular fa-eye text-xs" />
+		</div>
+	);
+};
+
+export const IconButtonDecreaseMd = () => {
+	return (
+		<div className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md bg-sky-500 text-white">
+			<i className="fa-solid fa-minus text-xs" />
+		</div>
+	);
+};
+
+export const IconButtonIncreaseMd = () => {
+	return (
+		<div className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md bg-sky-500 text-white">
+			<i className="fa-solid fa-plus text-xs" />
+		</div>
+	);
+};
+
+export const IconButtonAddMd = () => {
+	return (
+		<div className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md bg-green-500 text-white">
+			<i className="fa-solid fa-plus text-xs" />
 		</div>
 	);
 };
