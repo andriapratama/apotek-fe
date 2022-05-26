@@ -90,7 +90,7 @@ export const useProductDetailHook = () => {
 	const handleSetPageStock = async (i) => {
 		dispatch(setPageStockRedux(i));
 		setPageStock(i);
-		const stock = await findAllProductStockDataApi(i);
+		const stock = await findAllProductStockDataApi(productId, i);
 
 		setStockList(stock.data.data.stock.rows);
 	};
@@ -98,7 +98,7 @@ export const useProductDetailHook = () => {
 	const handleNextStock = async () => {
 		dispatch(nextPageStockRedux());
 		setPageStock(pageStockRedux + 1);
-		const stock = await findAllProductStockDataApi(pageStock + 1);
+		const stock = await findAllProductStockDataApi(productId, pageStock + 1);
 
 		setStockList(stock.data.data.stock.rows);
 	};
@@ -106,7 +106,7 @@ export const useProductDetailHook = () => {
 	const handlePrevStock = async () => {
 		dispatch(prevPageStockRedux());
 		setPageStock(pageStockRedux - 1);
-		const stock = await findAllProductStockDataApi(pageStock - 1);
+		const stock = await findAllProductStockDataApi(productId, pageStock - 1);
 
 		setStockList(stock.data.data.stock.rows);
 	};
@@ -130,7 +130,7 @@ export const useProductDetailHook = () => {
 	const handleSetPagePrice = async (i) => {
 		dispatch(setPagePriceRedux(i));
 		setPagePrice(i);
-		const price = await findAllProductPriceDataApi(i);
+		const price = await findAllProductPriceDataApi(productId, i);
 
 		setPriceList(price.data.data.price.rows);
 	};
@@ -138,7 +138,7 @@ export const useProductDetailHook = () => {
 	const handleNextPrice = async () => {
 		dispatch(nextPagePriceRedux());
 		setPagePrice(pagePriceRedux + 1);
-		const price = await findAllProductPriceDataApi(pagePrice + 1);
+		const price = await findAllProductPriceDataApi(productId, pagePrice + 1);
 
 		setPriceList(price.data.data.price.rows);
 	};
@@ -146,7 +146,7 @@ export const useProductDetailHook = () => {
 	const handlePrevPrice = async () => {
 		dispatch(prevPagePriceRedux());
 		setPagePrice(pagePriceRedux - 1);
-		const price = await findAllProductPriceDataApi(pagePrice - 1);
+		const price = await findAllProductPriceDataApi(productId, pagePrice - 1);
 
 		setPriceList(price.data.data.price.rows);
 	};
