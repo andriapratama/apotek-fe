@@ -9,6 +9,8 @@ import {
 import { useProductHook } from "./product.hook";
 import { Pagination } from "../../components/pagination";
 import { setProductIdRedux } from "../../stores/reducers/product-id.reducer";
+import { setPagePriceRedux } from "../../stores/reducers/pagination.price.reducer";
+import { setPageStockRedux } from "../../stores/reducers/pagination.stock.reducer";
 
 function ProductList() {
 	const navigate = useNavigate();
@@ -34,10 +36,7 @@ function ProductList() {
 
 			<div className="product-list__body mb-5 w-full rounded-lg border border-slate-400 bg-white shadow-lg shadow-slate-400">
 				<div className="p-5">
-					<div
-						className="mb-5"
-						onClick={() => navigate("/product/product-create")}
-					>
+					<div className="mb-5" onClick={() => navigate("/product/create")}>
 						<ButtonPrimayLg name="Add Product" type="button" />
 					</div>
 
@@ -129,8 +128,10 @@ function ProductList() {
 										<td className="flex border-slate-400 py-2 px-2 text-left">
 											<div
 												onClick={() => {
-													navigate("/product/product-detail");
+													navigate("/product/detail");
 													dispatch(setProductIdRedux(product.product_id));
+													dispatch(setPageStockRedux(1));
+													dispatch(setPagePriceRedux(1));
 												}}
 											>
 												<IconButtonDetailSm />
