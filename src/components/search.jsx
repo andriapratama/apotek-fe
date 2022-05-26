@@ -1,4 +1,4 @@
-export const SearchFeature = (...props) => {
+export const SearchFeature = ({ ...props }) => {
 	return (
 		<div className="mb-5 flex w-[350px] rounded-md border border-slate-400">
 			<input
