@@ -101,7 +101,7 @@ function StockHistory() {
 														className="cursor-pointer font-semibold hover:text-blue-500"
 														onClick={() => {
 															navigate(
-																`/product/product/${stock.transaction_code}`
+																`/transaction/detail/${stock.transaction_code}`
 															);
 														}}
 													>
