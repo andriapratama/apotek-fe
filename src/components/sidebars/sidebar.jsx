@@ -76,19 +76,19 @@ function Sidebar({ isShowSidebar }) {
 					<MenuComponent
 						name="Product"
 						icon="fa-solid fa-capsules"
-						link="/product/product-list"
+						link="/product/list"
 					/>
 
 					<MenuComponent
 						name="Supplier"
 						icon="fa-solid fa-shop"
-						link="/supplier/supplier-list"
+						link="/supplier/list"
 					/>
 
 					<MenuComponent
 						name="Transaction"
 						icon="fa-solid fa-receipt ml-1"
-						link="/transaction/transaction-list"
+						link="/transaction/list"
 					/>
 
 					<MenuComponent
