@@ -55,7 +55,7 @@ function ProductCreate() {
 			);
 
 			formik.resetForm();
-			navigate("/product/product-list");
+			navigate("/product/list");
 		} catch (error) {
 			setErrorMessage(error.response.data.message);
 		}
