@@ -17,3 +17,11 @@ export const storeTransactionDataApi = (
 		payment,
 	});
 };
+
+export const findAllTransactionDataApi = (page) => {
+	return instance.get(`/transaction?page=${page}`);
+};
+
+export const findOneTransactionDataByIdApi = (id) => {
+	return instance.get(`/transaction/${id}`);
+};
