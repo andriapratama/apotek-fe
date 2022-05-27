@@ -14,6 +14,7 @@ import ProductList from "./pages/products";
 import ProductCreate from "./pages/products/product.create";
 import ProductDetail from "./pages/products/product-details";
 import TransactionList from "./pages/transactions";
+import TransactionDetail from "./pages/transactions/transaction-details";
 import Cashier from "./pages/cashiers";
 
 function App() {
@@ -49,24 +50,16 @@ function App() {
 								<Route path="/master-data/unit" element={<Unit />} />
 								<Route path="/master-data/location" element={<Location />} />
 
-								<Route
-									path="/supplier/supplier-list"
-									element={<SupplierList />}
-								/>
+								<Route path="/supplier/list" element={<SupplierList />} />
 
-								<Route path="/product/product-list" element={<ProductList />} />
-								<Route
-									path="/product/product-create"
-									element={<ProductCreate />}
-								/>
-								<Route
-									path="/product/product-detail"
-									element={<ProductDetail />}
-								/>
+								<Route path="/product/list" element={<ProductList />} />
+								<Route path="/product/create" element={<ProductCreate />} />
+								<Route path="/product/detail" element={<ProductDetail />} />
 
+								<Route path="/transaction/list" element={<TransactionList />} />
 								<Route
-									path="/transaction/transaction-list"
-									element={<TransactionList />}
+									path="/transaction/detail/:id"
+									element={<TransactionDetail />}
 								/>
 
 								<Route path="/cashier" element={<Cashier />} />
