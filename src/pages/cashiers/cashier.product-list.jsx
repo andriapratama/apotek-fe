@@ -1,5 +1,5 @@
 import { IconButtonAddMd } from "../../components/button";
-import { useCashierHook } from "./cashier.hook";
+import { useFormatterHook } from "../../components/formatter.hook";
 
 const CashierProductList = ({
 	isShowProductList,
@@ -9,7 +9,7 @@ const CashierProductList = ({
 	setTransactionList,
 	setErrorMessage,
 }) => {
-	const { formatterIDR } = useCashierHook();
+	const { formatterIDR } = useFormatterHook();
 	return (
 		<div
 			className={`card absolute z-[99999] min-h-[50vh] w-full ${

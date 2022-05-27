@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { findProductDataByNameApi } from "../../api/product.api";
-import {
-	storeTransactionDataApi,
-	findTransactionIdApi,
-} from "../../api/transaction.api";
+import { findTransactionIdApi } from "../../api/transaction.api";
 
 export const useCashierHook = () => {
 	const [isShowProductList, setIsShowProductList] = useState(false);
@@ -12,14 +9,9 @@ export const useCashierHook = () => {
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [isShowPayment, setIsShowPayment] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-	const [errorPayment, setErrorPayment] = useState("");
-	const regex = /^[0-9\b]+$/;
-	const [grandDiscount, setGrandDiscount] = useState(0);
-	const [grandTotalDiscount, setGrandTotalDiscount] = useState(0);
-	const [grandTotal, setGrandTotal] = useState(totalPrice);
-	const [payment, setPayment] = useState(0);
-	const [changePayment, setChangePayment] = useState(0);
 	const [transactionId, setTransactionId] = useState("");
+	const [search, setSearch] = useState("");
+	const [isShowAlert, setIsShowAlert] = useState(false);
 
 	//Show Transaction ID Start
 	const showTransactionId = async () => {
@@ -33,26 +25,6 @@ export const useCashierHook = () => {
 		//eslint-disable-next-line
 	}, []);
 	//Show Transaction ID End
-
-	//Store Transaction and Transaction Detail Start
-	const storeTransactionData = async () => {
-		await storeTransactionDataApi(
-			transactionList,
-			grandDiscount,
-			grandTotalDiscount,
-			payment
-		);
-
-		setTransactionList([]);
-		setIsShowPayment(false);
-		setChangePayment(0);
-		setGrandDiscount(0);
-		setPayment(0);
-		setGrandTotal(totalPrice);
-		setGrandTotalDiscount(0);
-		showTransactionId();
-	};
-	//Store Transaction and Transaction Detail End
 
 	//Show Product Data By Name Start
 	const showProductDataByName = async (search) => {
@@ -213,20 +185,11 @@ export const useCashierHook = () => {
 	};
 	//Handle Payment End
 
-	//Formatter IDR Start
-	const formatterIDR = (value) => {
-		const format = value.toString().split("").reverse().join("");
-		const convert = format.match(/\d{1,3}/g);
-		const IDR = "Rp " + convert.join(".").split("").reverse().join("");
-
-		return IDR;
-	};
-	//Formatter IDR End
-
 	return {
 		isShowProductList,
 		setIsShowProductList,
 		productList,
+		setProductList,
 		transactionList,
 		setTransactionList,
 		showProductDataByName,
@@ -235,29 +198,18 @@ export const useCashierHook = () => {
 		handleIncreaseQuantity,
 		handleDiscountSubTotal,
 		handleTotalDiscountSubTotal,
-		formatterIDR,
 		totalPrice,
-		setTotalPrice,
 		handleDeleteRowTransaction,
 		isShowPayment,
 		setIsShowPayment,
-		storeTransactionData,
 		handlePayment,
 		errorMessage,
 		setErrorMessage,
-		errorPayment,
-		setErrorPayment,
-		regex,
-		grandDiscount,
-		setGrandDiscount,
-		grandTotalDiscount,
-		setGrandTotalDiscount,
-		grandTotal,
-		setGrandTotal,
-		payment,
-		setPayment,
-		changePayment,
-		setChangePayment,
 		transactionId,
+		search,
+		setSearch,
+		showTransactionId,
+		isShowAlert,
+		setIsShowAlert,
 	};
 };

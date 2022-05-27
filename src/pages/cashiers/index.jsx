@@ -8,13 +8,16 @@ import {
 } from "../../components/button";
 import CashierProductList from "./cashier.product-list";
 import { useCashierHook } from "./cashier.hook";
-import CashierPayment from "./cashier.paymet";
+import { useFormatterHook } from "../../components/formatter.hook";
+import CashierPayment from "./cashier-payments";
+import CashierNotice from "./cashier.notice";
 
 function Cashier() {
 	const {
 		isShowProductList,
 		setIsShowProductList,
 		productList,
+		setProductList,
 		transactionList,
 		setTransactionList,
 		showProductDataByName,
@@ -23,27 +26,22 @@ function Cashier() {
 		handleIncreaseQuantity,
 		handleDiscountSubTotal,
 		handleTotalDiscountSubTotal,
-		formatterIDR,
 		totalPrice,
 		handleDeleteRowTransaction,
 		isShowPayment,
 		setIsShowPayment,
-		storeTransactionData,
 		handlePayment,
 		errorMessage,
 		setErrorMessage,
-		grandDiscount,
-		setGrandDiscount,
-		grandTotalDiscount,
-		setGrandTotalDiscount,
-		grandTotal,
-		setGrandTotal,
-		payment,
-		setPayment,
-		changePayment,
-		setChangePayment,
 		transactionId,
+		search,
+		setSearch,
+		showTransactionId,
+		isShowAlert,
+		setIsShowAlert,
 	} = useCashierHook();
+
+	const { formatterIDR } = useFormatterHook();
 
 	return (
 		<section className="cashier w-full">
@@ -51,19 +49,20 @@ function Cashier() {
 				totalPrice={totalPrice}
 				isShowPayment={isShowPayment}
 				setIsShowPayment={setIsShowPayment}
-				storeTransactionData={storeTransactionData}
-				grandDiscount={grandDiscount}
-				setGrandDiscount={setGrandDiscount}
-				grandTotalDiscount={grandTotalDiscount}
-				setGrandTotalDiscount={setGrandTotalDiscount}
-				grandTotal={grandTotal}
-				setGrandTotal={setGrandTotal}
-				payment={payment}
-				setPayment={setPayment}
-				changePayment={changePayment}
-				setChangePayment={setChangePayment}
+				transactionList={transactionList}
+				setTransactionList={setTransactionList}
+				setSearch={setSearch}
+				showTransactionId={showTransactionId}
+				setIsShowAlert={setIsShowAlert}
+				setProductList={setProductList}
+				transactionId={transactionId}
 			/>
 
+			<CashierNotice
+				isShowAlert={isShowAlert}
+				setIsShowAlert={setIsShowAlert}
+				transactionId={transactionId}
+			/>
 			<div className="cashier__title mb-5">
 				<span className="text-2xl text-slate-600">Cashier</span>
 			</div>
@@ -110,8 +109,12 @@ function Cashier() {
 									className="ml-2 w-[350px] border-0 py-1 text-slate-700 outline-none"
 									placeholder="Search product name"
 									type="text"
+									value={search}
 									onClick={() => setIsShowProductList(true)}
-									onChange={(e) => showProductDataByName(e.target.value)}
+									onChange={(e) => {
+										showProductDataByName(e.target.value);
+										setSearch(e.target.value);
+									}}
 								/>
 								<div className="flex w-[50px] items-center justify-center border-l-2">
 									<i className="fa-solid fa-magnifying-glass text-slate-700" />
