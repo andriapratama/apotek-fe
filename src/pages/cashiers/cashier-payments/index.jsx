@@ -79,10 +79,18 @@ function CashierPayment({
 								value={grandDiscount}
 								onChange={(e) => {
 									if (e.target.value === "" || regex.test(e.target.value)) {
-										setGrandDiscount(e.target.value);
+										if (e.target.value >= 100) {
+											setGrandDiscount(parseInt(100));
+										} else if (e.target.value >= 0) {
+											setGrandDiscount(parseInt(e.target.value || 0));
+										}
 									}
 
-									setGrandTotalDiscount((totalPrice * e.target.value) / 100);
+									if ((totalPrice * e.target.value) / 100 >= totalPrice) {
+										setGrandTotalDiscount(totalPrice);
+									} else {
+										setGrandTotalDiscount((totalPrice * e.target.value) / 100);
+									}
 								}}
 							/>
 						</div>
@@ -97,7 +105,11 @@ function CashierPayment({
 								value={grandTotalDiscount}
 								onChange={(e) => {
 									if (e.target.value === "" || regex.test(e.target.value)) {
-										setGrandTotalDiscount(e.target.value);
+										if (e.target.value >= totalPrice) {
+											setGrandTotalDiscount(totalPrice);
+										} else {
+											setGrandTotalDiscount(parseInt(e.target.value) || 0);
+										}
 									}
 
 									setGrandDiscount(0);
@@ -124,7 +136,7 @@ function CashierPayment({
 								value={payment}
 								onChange={(e) => {
 									if (e.target.value === "" || regex.test(e.target.value)) {
-										setPayment(e.target.value);
+										setPayment(parseInt(e.target.value) || 0);
 									}
 								}}
 								onClick={() => {
