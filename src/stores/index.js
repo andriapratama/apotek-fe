@@ -5,6 +5,7 @@ import paginationReducer from "./reducers/pagination.reducer";
 import paginationStockReducer from "./reducers/pagination.stock.reducer";
 import paginationPriceReducer from "./reducers/pagination.price.reducer";
 import productIdReducer from "./reducers/product-id.reducer";
+import transactionValueReducer from "./reducers/transaction-value.reducer";
 
 const persistConfig = {
 	key: "root",
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	paginationStock: paginationStockReducer,
 	paginationPrice: paginationPriceReducer,
 	productId: productIdReducer,
+	transactionValue: transactionValueReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
