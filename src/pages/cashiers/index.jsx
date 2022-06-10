@@ -69,9 +69,9 @@ function Cashier() {
 
 			<div className="cashier__content card">
 				<div className="p-5">
-					<div className="cashier-head mb-5 border-b-2 border-sky-500 pb-5">
-						<div className="mb-5 flex justify-between">
-							<div className="flex w-[48%] items-center justify-between">
+					<div className="cashier-head mb-5 flex justify-between border-b-2 border-sky-500 pb-5">
+						<div className="w-[48%]">
+							<div className="mb-5 flex w-full items-center justify-between">
 								<p className="text-slate-600">Date</p>
 								<input
 									className="w-[88%] rounded-lg border border-slate-400 py-1 px-2 text-slate-600"
@@ -81,7 +81,7 @@ function Cashier() {
 								/>
 							</div>
 
-							<div className="flex w-[48%] items-center justify-between">
+							<div className="flex w-full items-center justify-between">
 								<p className="text-slate-600">Cashier Name</p>
 								<input
 									className="w-[75%] rounded-lg border border-slate-400 py-1 px-2 text-slate-600"
@@ -91,14 +91,10 @@ function Cashier() {
 								/>
 							</div>
 						</div>
-						<div className="flex w-[48%] items-center justify-between">
-							<p className="text-slate-600">Transaction Code</p>
-							<input
-								className="w-[71%] rounded-lg border border-slate-400 py-1 px-2 text-slate-600"
-								type="text"
-								value={transactionId}
-								disabled
-							/>
+						<div className="flex w-[45%] items-end justify-end">
+							<div className="flex h-full w-full items-center justify-end rounded bg-sky-500 pr-10 text-right text-7xl text-white ">
+								{formatterIDR(totalPrice)}
+							</div>
 						</div>
 					</div>
 
@@ -218,19 +214,6 @@ function Cashier() {
 										</tr>
 									);
 								})}
-							</tbody>
-							<tbody>
-								<tr>
-									<td
-										colSpan={6}
-										className="pr-10 pt-5 text-right text-lg font-bold"
-									>
-										Total
-									</td>
-									<td colSpan={2} className="pt-5 text-lg">
-										{formatterIDR(totalPrice)}
-									</td>
-								</tr>
 							</tbody>
 						</table>
 

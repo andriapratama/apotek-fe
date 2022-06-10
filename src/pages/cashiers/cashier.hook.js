@@ -69,7 +69,11 @@ export const useCashierHook = () => {
 		const number = parseInt(e.target.value || 0);
 		let newProduct = [...transactionList];
 
-		newProduct[index].quantity = number;
+		if (number < 1) {
+			newProduct[index].quantity = 1;
+		} else {
+			newProduct[index].quantity = number;
+		}
 
 		newProduct[index].total =
 			newProduct[index].price * newProduct[index].quantity;
@@ -122,10 +126,21 @@ export const useCashierHook = () => {
 		const newDiscount = parseInt(e.target.value || 0);
 		let newProduct = [...transactionList];
 
-		newProduct[index].discount = newDiscount;
+		if (newDiscount > 100) {
+			newProduct[index].discount = 100;
+		} else {
+			newProduct[index].discount = newDiscount;
+		}
 
-		newProduct[index].totalDiscount =
-			(newProduct[index].subTotal * newDiscount) / 100;
+		if (
+			(newProduct[index].subTotal * newDiscount) / 100 >
+			newProduct[index].subTotal
+		) {
+			newProduct[index].totalDiscount = newProduct[index].subTotal;
+		} else {
+			newProduct[index].totalDiscount =
+				(newProduct[index].subTotal * newDiscount) / 100;
+		}
 
 		newProduct[index].total =
 			newProduct[index].subTotal - newProduct[index].totalDiscount;
@@ -143,7 +158,12 @@ export const useCashierHook = () => {
 		const newTotalDiscount = parseInt(e.target.value || 0);
 		let newProduct = [...transactionList];
 
-		newProduct[index].totalDiscount = newTotalDiscount;
+		if (newTotalDiscount > newProduct[index].subTotal) {
+			newProduct[index].totalDiscount = newProduct[index].subTotal;
+		} else {
+			newProduct[index].totalDiscount = newTotalDiscount;
+		}
+
 		newProduct[index].discount = 0;
 		newProduct[index].total = newProduct[index].subTotal - newTotalDiscount;
 
