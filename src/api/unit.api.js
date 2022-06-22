@@ -14,6 +14,10 @@ export const findUnitDataByNameApi = (search) => {
 	return instance.get(`/unit/find?search=${search}`);
 };
 
+export const findOneUnitDataById = (id) => {
+	return instance.get(`/unit/${id}`);
+};
+
 export const updateUnitDataApi = (unitId, name) => {
 	return instance.patch(`/unit`, {
 		unitId,
