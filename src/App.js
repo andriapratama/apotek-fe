@@ -16,6 +16,9 @@ import ProductDetail from "./pages/products/product-details";
 import TransactionList from "./pages/transactions";
 import TransactionDetail from "./pages/transactions/transaction-details";
 import Cashier from "./pages/cashiers";
+import IncomingProductList from "./pages/incoming-product";
+import IncomingProductNew from "./pages/incoming-product/incoming-product-new";
+import IncomingProductDetail from "./pages/incoming-product/incoming-detail/incoming.detail";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -63,6 +66,19 @@ function App() {
 								/>
 
 								<Route path="/cashier" element={<Cashier />} />
+
+								<Route
+									path="/incoming-product/list"
+									element={<IncomingProductList />}
+								/>
+								<Route
+									path="/incoming-product/new"
+									element={<IncomingProductNew />}
+								/>
+								<Route
+									path="/incoming-product/detail/:id"
+									element={<IncomingProductDetail />}
+								/>
 							</Routes>
 						</div>
 					</div>
