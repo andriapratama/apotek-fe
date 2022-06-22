@@ -96,6 +96,12 @@ function Sidebar({ isShowSidebar }) {
 						icon="fa-solid fa-cart-shopping"
 						link="/cashier"
 					/>
+
+					<MenuComponent
+						name="Incoming Product"
+						icon="fa-solid fa-kit-medical"
+						link="/incoming-product/list"
+					/>
 				</div>
 			</div>
 		</section>
