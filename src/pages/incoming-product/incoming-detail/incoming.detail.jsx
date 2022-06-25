@@ -65,13 +65,11 @@ function IncomingProductDetail() {
 					</tbody>
 				</table>
 
-				<div
-					onClick={() => {
-						navigate(-1);
-					}}
-				>
-					<ButtonSecondary name="Back" type="button" />
-				</div>
+				<ButtonSecondary
+					name="Back"
+					type="button"
+					onClick={() => navigate(-1)}
+				/>
 			</div>
 		</section>
 	);
