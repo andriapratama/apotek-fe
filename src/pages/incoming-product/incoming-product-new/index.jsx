@@ -3,7 +3,7 @@ import {
 	IconButtonDeleteMd,
 	IconButtonIncreaseMd,
 } from "../../../components/button";
-import { ShowProductList } from "./show-product/show-product.component";
+import { ShowProductList } from "../../../components/show-product/show-product.component";
 import { useIncomingProductNewHook } from "./incoming-product-new.hook";
 import { useDispatch } from "react-redux";
 import { setPageRedux } from "../../../stores/reducers/pagination.reducer";
@@ -74,7 +74,7 @@ function IncomingProductNew() {
 						}}
 					></textarea>
 					{errorMessageNote ? (
-						<div className="text-sm text-red-400">{errorMessageNote}</div>
+						<div className="text-sm text-red-600">{errorMessageNote}</div>
 					) : null}
 				</div>
 
