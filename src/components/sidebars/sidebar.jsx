@@ -102,6 +102,12 @@ function Sidebar({ isShowSidebar }) {
 						icon="fa-solid fa-kit-medical"
 						link="/incoming-product/list"
 					/>
+
+					<MenuComponent
+						name="Stock Opname"
+						icon="fa-solid fa-prescription-bottle-medical"
+						link="/stock-opname/list"
+					/>
 				</div>
 			</div>
 		</section>
