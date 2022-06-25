@@ -110,9 +110,9 @@ export const useStockOpnameNewHook = () => {
 	const storeStockOpnameData = async () => {
 		await storeStockOpnameDataApi(transactionList, operator, note);
 
-		setTransactionList([]);
-		setNote("");
 		setTimeout(() => {
+			setTransactionList([]);
+			setNote("");
 			navigate("/stock-opname/list");
 		}, 1500);
 	};
