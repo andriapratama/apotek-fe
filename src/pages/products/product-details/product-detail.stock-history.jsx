@@ -69,7 +69,7 @@ function StockHistory() {
 																className="cursor-pointer font-semibold hover:text-sky-500"
 																onClick={() => {
 																	navigate(
-																		`/product/product/${stock.transaction_code}`
+																		`/stock-opname/detail/${stock.transaction_code}`
 																	);
 																}}
 															>
