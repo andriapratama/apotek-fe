@@ -19,6 +19,9 @@ import Cashier from "./pages/cashiers";
 import IncomingProductList from "./pages/incoming-product";
 import IncomingProductNew from "./pages/incoming-product/incoming-product-new";
 import IncomingProductDetail from "./pages/incoming-product/incoming-detail/incoming.detail";
+import StockOpname from "./pages/stock-opname";
+import StockOpnameNew from "./pages/stock-opname/stock-opname-new/stock-opname.new";
+import StockOpnameDetail from "./pages/stock-opname/stock-opname-detail/stock-opname.detail";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -78,6 +81,13 @@ function App() {
 								<Route
 									path="/incoming-product/detail/:id"
 									element={<IncomingProductDetail />}
+								/>
+
+								<Route path="/stock-opname/list" element={<StockOpname />} />
+								<Route path="/stock-opname/new" element={<StockOpnameNew />} />
+								<Route
+									path="/stock-opname/detail/:id"
+									element={<StockOpnameDetail />}
 								/>
 							</Routes>
 						</div>
