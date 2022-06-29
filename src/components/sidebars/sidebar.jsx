@@ -17,6 +17,12 @@ function Sidebar({ isShowSidebar }) {
 			<div className="sidebar__body w-full">
 				<div className="mt-10">
 					<div className="master-data relative">
+						<MenuComponent
+							name="Dashboard"
+							icon="fa-brands fa-microsoft"
+							link="/"
+						/>
+
 						<MenuDropdownComponent
 							name="Master Data"
 							icon="fa-solid fa-database"
