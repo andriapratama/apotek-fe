@@ -22,6 +22,7 @@ import IncomingProductDetail from "./pages/incoming-product/incoming-detail/inco
 import StockOpname from "./pages/stock-opname";
 import StockOpnameNew from "./pages/stock-opname/stock-opname-new/stock-opname.new";
 import StockOpnameDetail from "./pages/stock-opname/stock-opname-detail/stock-opname.detail";
+import Dashboard from "./pages/dashboard";
 
 function App() {
 	const [isShowSidebar, setIsShowSidebar] = useState(false);
@@ -48,6 +49,8 @@ function App() {
 					>
 						<div className="mt-8 flex w-[95%] justify-center">
 							<Routes>
+								<Route path="/" element={<Dashboard />} />
+
 								<Route path="/master-data/role" element={<Role />} />
 								<Route path="/master-data/category" element={<Category />} />
 								<Route path="/master-data/type" element={<Type />} />
