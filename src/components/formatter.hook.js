@@ -11,11 +11,16 @@ export const useFormatterHook = () => {
 
 	//Formatter IDR Start
 	const formatterIDR = (value) => {
-		const format = value.toString().split("").reverse().join("");
-		const convert = format.match(/\d{1,3}/g);
-		const IDR = "Rp " + convert.join(".").split("").reverse().join("");
+		if (!value) {
+			const IDR = "Rp 0";
+			return IDR;
+		} else {
+			const format = value.toString().split("").reverse().join("");
+			const convert = format.match(/\d{1,3}/g);
+			const IDR = "Rp " + convert.join(".").split("").reverse().join("");
 
-		return IDR;
+			return IDR;
+		}
 	};
 	//Formatter IDR End
 
