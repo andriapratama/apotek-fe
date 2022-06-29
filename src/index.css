@@ -10,4 +10,14 @@
 	.table {
 		@apply mb-5 w-full border-collapse text-slate-600;
 	}
+
+	.dashboard__content:hover i {
+		transform: rotate(20deg);
+		transition: all 300ms ease-in-out;
+	}
+
+	.dashboard__content i {
+		transform: rotate(0);
+		transition: all 300ms ease-in-out;
+	}
 }
