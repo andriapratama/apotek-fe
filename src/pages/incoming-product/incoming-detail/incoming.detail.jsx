@@ -2,6 +2,8 @@ import moment from "moment";
 import "moment/locale/id";
 import { useNavigate } from "react-router-dom";
 import { ButtonSecondary } from "../../../components/button";
+import CardContent from "../../../components/cards/card.content";
+import TitleSection from "../../../components/title-sections/title-section";
 import useIncomingDetailHook from "./incoming-detail.hook";
 
 function IncomingProductDetail() {
@@ -10,11 +12,9 @@ function IncomingProductDetail() {
 
 	return (
 		<section className="w-full">
-			<div className="mb-5">
-				<span className="text-2xl text-slate-600">Incoming Product Detail</span>
-			</div>
+			<TitleSection>Incoming Product Detail</TitleSection>
 
-			<div className="card p-5">
+			<CardContent>
 				<div className="mb-5 flex w-full justify-between">
 					<div className="flex w-[48%] items-center justify-between">
 						<p>Date</p>
@@ -42,7 +42,7 @@ function IncomingProductDetail() {
 
 				<table className="table">
 					<thead>
-						<tr className="border-b-2 border-slate-400">
+						<tr className="tr-head">
 							<th className="pl-2 text-left">Name</th>
 							<th>Remaining Stock</th>
 							<th>Unit</th>
@@ -52,7 +52,7 @@ function IncomingProductDetail() {
 					<tbody className="text-center">
 						{purchasingList.map((purchasing, index) => {
 							return (
-								<tr className="border-b border-slate-400" key={index}>
+								<tr className="tr-body" key={index}>
 									<td className="py-1 pl-2 text-left">
 										{purchasing.product.name}
 									</td>
@@ -70,7 +70,7 @@ function IncomingProductDetail() {
 					type="button"
 					onClick={() => navigate(-1)}
 				/>
-			</div>
+			</CardContent>
 		</section>
 	);
 }
