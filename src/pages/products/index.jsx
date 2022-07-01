@@ -13,6 +13,7 @@ import { setPagePriceRedux } from "../../stores/reducers/pagination.price.reduce
 import { setPageStockRedux } from "../../stores/reducers/pagination.stock.reducer";
 import TitleSection from "../../components/title-sections/title-section";
 import CardContent from "../../components/cards/card.content";
+import { SearchFeature } from "../../components/search";
 
 function ProductList() {
 	const navigate = useNavigate();
@@ -35,21 +36,18 @@ function ProductList() {
 			<TitleSection>Product List</TitleSection>
 
 			<CardContent>
-				<div className="mb-5" onClick={() => navigate("/product/create")}>
-					<ButtonPrimayLg name="Add Product" type="button" />
+				<div className="mb-5">
+					<ButtonPrimayLg
+						name="Add Product"
+						type="button"
+						onClick={() => navigate("/product/create")}
+					/>
 				</div>
 
-				<div className="mb-5 flex w-[350px] rounded-md border border-slate-400">
-					<input
-						className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
-						placeholder="Search name product"
-						type="text"
-						onChange={(e) => handleSearchProduct(e.target.value)}
-					/>
-					<div className="flex w-[50px] items-center justify-center border-l-2">
-						<i className="fa-solid fa-magnifying-glass text-slate-700" />
-					</div>
-				</div>
+				<SearchFeature
+					placeholder="Search name product"
+					onChange={(e) => handleSearchProduct(e.target.value)}
+				/>
 
 				<table className="mb-5 w-full border-collapse text-sm">
 					<thead>
