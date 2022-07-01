@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { ButtonPrimay, ButtonSecondary } from "../../components/button";
-import {
-	TextField,
-	CustomSelectField,
-	CustomSelectMultipleField,
-	NumberField,
-} from "../../components/form.field";
+import { TextField } from "../../components/form-fields/text.field";
+import { CustomSelectField } from "../../components/form-fields/custom-select.field";
+import { CustomSelectMultipleField } from "../../components/form-fields/custom-select-multiple";
+import { NumberField } from "../../components/form-fields/number.field";
 import { validation } from "./product.validation";
 import { useCategoryHook } from "../master-data/categories/category.hook";
 import { useTypeHook } from "../master-data/types/type.hook";
