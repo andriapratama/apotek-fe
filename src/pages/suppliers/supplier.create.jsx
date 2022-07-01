@@ -1,6 +1,12 @@
 import { ButtonPrimay, ButtonSecondary } from "../../components/button";
 import { TextField } from "../../components/form-fields/text.field";
 import { TextareaField } from "../../components/form-fields/text-area.field";
+import ModalBackground from "../../components/modals/modal.background";
+import ModalContent from "../../components/modals/modal.content";
+import ModalTitle from "../../components/modals/modal.title";
+import ErrorWithBg from "../../components/errors/error.background";
+import ModalBody from "../../components/modals/modal.body";
+import ModalFooter from "../../components/modals/modal.footer";
 
 function SupplierCreate({
 	isShowCreate,
@@ -10,27 +16,15 @@ function SupplierCreate({
 	setErrors,
 }) {
 	return (
-		<div className={isShowCreate ? `visible` : "invisible"}>
-			<div className="fixed top-0 bottom-0 left-0 right-0 z-[9999] bg-slate-500 opacity-70"></div>
-			<div
-				className="fixed top-0 left-0 right-0 z-[9999] flex justify-center"
-				onClick={() => setIsShowCreate(false)}
-			>
-				<form
-					className="mt-[100px] h-auto w-[500px] rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-500"
-					onClick={(e) => e.stopPropagation()}
-					onSubmit={formik.handleSubmit}
-				>
-					<div className="supplier-create__head border-b border-slate-200 p-5">
-						<span className="text-3xl text-slate-700">Add Supplier Form</span>
-					</div>
+		<>
+			<ModalBackground state={isShowCreate}></ModalBackground>
 
-					<div className="supplier-create__body border-b border-slate-200 p-5">
-						{errors ? (
-							<div className="mb-5 w-full text-center text-red-500">
-								{errors}
-							</div>
-						) : null}
+			<ModalContent state={isShowCreate} width="w-[500px]">
+				<form onSubmit={formik.handleSubmit}>
+					<ModalTitle>Add Supplier Form</ModalTitle>
+
+					<ModalBody>
+						{errors ? <ErrorWithBg>{errors}</ErrorWithBg> : null}
 
 						<div className="mb-5 w-full">
 							<p className="text-slate-700">Supplier Name</p>
@@ -70,19 +64,28 @@ function SupplierCreate({
 								touched={formik.touched.address}
 							/>
 						</div>
-					</div>
+					</ModalBody>
 
-					<div className="supplier-create__footer flex p-5">
+					<ModalFooter>
 						<div className="mr-3">
 							<ButtonPrimay name="Save" type="submit" />
 						</div>
-						<div onClick={() => setIsShowCreate(false)}>
-							<ButtonSecondary name="Cancel" type="button" />
-						</div>
-					</div>
+
+						<ButtonSecondary
+							name="Cancel"
+							type="button"
+							onClick={() => {
+								setIsShowCreate(false);
+								setTimeout(() => {
+									setErrors("");
+									formik.resetForm();
+								}, 200);
+							}}
+						/>
+					</ModalFooter>
 				</form>
-			</div>
-		</div>
+			</ModalContent>
+		</>
 	);
 }
 
