@@ -1,5 +1,6 @@
 import { ButtonPrimay, ButtonSecondary } from "../../components/button";
-import { TextField, TextareaField } from "../../components/form.field";
+import { TextField } from "../../components/form-fields/text.field";
+import { TextareaField } from "../../components/form-fields/text-area.field";
 
 function SupplierCreate({
 	isShowCreate,
