@@ -7,6 +7,7 @@ import { DangerAlert } from "../../../components/alerts/danger.alert";
 import { useUnitHook } from "./unit.hook";
 import TitleSection from "../../../components/title-sections/title-section";
 import CardContent from "../../../components/cards/card.content";
+import { SearchFeature } from "../../../components/search";
 
 function Unit() {
 	const {
@@ -53,17 +54,10 @@ function Unit() {
 			</CardContent>
 
 			<CardContent>
-				<div className="mb-5 flex w-[350px] rounded-md border border-slate-200">
-					<input
-						className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
-						placeholder="Search"
-						unit="text"
-						onChange={(e) => handleSearchUnit(e.target.value)}
-					/>
-					<div className="flex w-[50px] items-center justify-center border-l-2">
-						<i className="fa-solid fa-magnifying-glass text-slate-700" />
-					</div>
-				</div>
+				<SearchFeature
+					placeholder="Search"
+					onChange={(e) => handleSearchUnit(e.target.value)}
+				/>
 
 				<table className="table">
 					<thead>
