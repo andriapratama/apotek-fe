@@ -11,6 +11,7 @@ import { DangerAlert } from "../../components/alerts/danger.alert";
 import { deleteSupplierDataApi } from "../../api/supplier.api";
 import TitleSection from "../../components/title-sections/title-section";
 import CardContent from "../../components/cards/card.content";
+import { SearchFeature } from "../../components/search";
 
 function SupplierList() {
 	const {
@@ -66,21 +67,18 @@ function SupplierList() {
 			<TitleSection>Supplier List</TitleSection>
 
 			<CardContent>
-				<div className="mb-5" onClick={() => setIsShowCreate(true)}>
-					<ButtonPrimayLg name="Add Supplier" type="button" />
+				<div className="mb-5">
+					<ButtonPrimayLg
+						name="Add Supplier"
+						type="button"
+						onClick={() => setIsShowCreate(true)}
+					/>
 				</div>
 
-				<div className="mb-5 flex w-[350px] rounded-md border border-slate-200">
-					<input
-						className="ml-2 w-[300px] border-0 py-1 text-slate-700 outline-none"
-						placeholder="Search name supplier"
-						type="text"
-						onChange={(e) => handleSearch(e.target.value)}
-					/>
-					<div className="flex w-[50px] items-center justify-center border-l-2">
-						<i className="fa-solid fa-magnifying-glass text-slate-700" />
-					</div>
-				</div>
+				<SearchFeature
+					placeholder="Search name supplier"
+					onChange={(e) => handleSearch(e.target.value)}
+				/>
 
 				<table className="table">
 					<thead>
