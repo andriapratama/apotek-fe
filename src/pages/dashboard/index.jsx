@@ -1,5 +1,8 @@
 import { useDashboardHook } from "./dashboard.hook";
 import useFormatterHook from "../../components/formatter.hook";
+import TitleSection from "../../components/title-sections/title-section";
+import CardContent from "../../components/cards/card.content";
+import CardTitle from "../../components/cards/card.titles";
 
 function Dashboard() {
 	const {
@@ -12,11 +15,9 @@ function Dashboard() {
 	const { formatterIDR } = useFormatterHook();
 	return (
 		<section className="w-full">
-			<div className="mb-5">
-				<span className="text-2xl text-slate-600">Dashboard</span>
-			</div>
+			<TitleSection>Dashboard</TitleSection>
 
-			<div className="card p-5">
+			<CardContent>
 				<div className="flex w-full justify-between text-slate-900">
 					<div className="dashboard__content flex h-[100px] w-[350px] items-center justify-between rounded-lg border border-slate-400 bg-sky-400 p-3">
 						<div className="block">
@@ -40,18 +41,16 @@ function Dashboard() {
 						<i className="fa-solid fa-dollar-sign mr-2 text-4xl" />
 					</div>
 				</div>
-			</div>
+			</CardContent>
 
-			<div className="card p-5">
-				<div className="mb-5">
-					<p className="text-xl text-slate-600">Product Sold Today</p>
-				</div>
+			<CardContent>
+				<CardTitle>Product Sold Today</CardTitle>
 
 				<div className="w-[50%]">
 					{listTotalAllProductSoldToday.length > 0 ? (
 						<table className="table">
 							<thead>
-								<tr className="border-b-2 border-slate-400">
+								<tr className="tr-head">
 									<th>No</th>
 									<th className="pl-2 text-left">Name</th>
 									<th>Total</th>
@@ -60,10 +59,7 @@ function Dashboard() {
 							<tbody>
 								{listTotalAllProductSoldToday.map((value, index) => {
 									return (
-										<tr
-											className="border-b border-slate-400 text-center"
-											key={index}
-										>
+										<tr className="tr-body text-center" key={index}>
 											<td className="py-1">{index + 1}</td>
 											<td className="pl-2 text-left">{value.name}</td>
 											<td>{value.total_quantity}</td>
@@ -76,7 +72,7 @@ function Dashboard() {
 						<div className="w-full text-slate-600">No Sales Today</div>
 					)}
 				</div>
-			</div>
+			</CardContent>
 		</section>
 	);
 }
