@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ErrorForm from "../errors/error.form";
 
 export const CustomSelectMultipleField = ({
 	name,
@@ -40,7 +41,7 @@ export const CustomSelectMultipleField = ({
 	}
 
 	return (
-		<div className="relative">
+		<>
 			<div className="flex h-auto w-full cursor-pointer justify-center rounded-md border border-slate-400">
 				<div
 					className="flex w-[97%] items-center justify-between overflow-scroll py-[5px] text-slate-600"
@@ -79,7 +80,7 @@ export const CustomSelectMultipleField = ({
 							className="absolute z-[9999] mb-1 h-auto w-full rounded-lg border border-slate-400 bg-white shadow-lg shadow-slate-400"
 							onClick={(e) => e.stopPropagation()}
 						>
-							<div className="my-2 mx-2 px-2">
+							<div className="my-2 px-2">
 								<input
 									name={`${name}`}
 									className="w-full rounded-lg border border-slate-400 py-1 px-2"
@@ -108,9 +109,8 @@ export const CustomSelectMultipleField = ({
 					</>
 				) : null}
 			</div>
-			{isError ? (
-				<div className="absolute text-xs text-red-500">{errorMessage}</div>
-			) : null}
-		</div>
+
+			{isError ? <ErrorForm>{errorMessage}</ErrorForm> : null}
+		</>
 	);
 };

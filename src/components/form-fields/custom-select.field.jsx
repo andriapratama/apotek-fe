@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ErrorForm from "../errors/error.form";
 
 export const CustomSelectField = ({
 	name,
@@ -24,10 +25,10 @@ export const CustomSelectField = ({
 	}
 
 	return (
-		<div className="relative">
-			<div className="flex h-auto w-full cursor-pointer justify-center rounded-md border border-slate-400">
+		<>
+			<div className="flex h-auto w-full cursor-pointer justify-center rounded-md border border-slate-400 px-2">
 				<div
-					className="flex w-[97%] items-center justify-between py-[4px] text-slate-600"
+					className="flex w-full items-center justify-between py-[4px] text-slate-600"
 					{...props}
 					onClick={() => setShowOption(!showOption)}
 				>
@@ -73,9 +74,8 @@ export const CustomSelectField = ({
 					</>
 				) : null}
 			</div>
-			{isError ? (
-				<div className="absolute text-xs text-red-500">{errorMessage}</div>
-			) : null}
-		</div>
+
+			{isError ? <ErrorForm>{errorMessage}</ErrorForm> : null}
+		</>
 	);
 };

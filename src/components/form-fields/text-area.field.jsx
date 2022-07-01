@@ -1,3 +1,5 @@
+import ErrorForm from "../errors/error.form";
+
 export const TextareaField = ({ errorMessage, touched, ...props }) => {
 	let isError = "";
 
@@ -6,18 +8,16 @@ export const TextareaField = ({ errorMessage, touched, ...props }) => {
 	}
 
 	return (
-		<div className="relative">
-			<div className="flex h-auto w-full justify-center rounded-md border border-slate-400 py-2">
+		<>
+			<div className="flex h-auto w-full justify-center rounded-md border border-slate-400 py-2 px-2">
 				<textarea
-					className="w-[95%] resize-none border-0 text-slate-700 outline-none"
+					className="w-full resize-none border-0 text-slate-700 outline-none"
 					{...props}
 					autoComplete="off"
 					autoCorrect="off"
 				></textarea>
 			</div>
-			{isError ? (
-				<div className="absolute text-xs text-red-500">{errorMessage}</div>
-			) : null}
-		</div>
+			{isError ? <ErrorForm>{errorMessage}</ErrorForm> : null}
+		</>
 	);
 };

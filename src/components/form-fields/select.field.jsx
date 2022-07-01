@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ErrorForm from "../errors/error.form";
 
 export const SelectField = ({
 	errorMessage,
@@ -16,7 +17,7 @@ export const SelectField = ({
 	}, [touched, errorMessage]);
 
 	return (
-		<div className="relative">
+		<>
 			<select
 				className="text-sate-700 w-full rounded-md border border-slate-400 py-[5px] px-2 capitalize outline-none"
 				{...props}
@@ -26,9 +27,8 @@ export const SelectField = ({
 				</option>
 				{options}
 			</select>
-			{isError ? (
-				<div className="absolute text-xs text-red-500">{errorMessage}</div>
-			) : null}
-		</div>
+
+			{isError ? <ErrorForm>{errorMessage}</ErrorForm> : null}
+		</>
 	);
 };
