@@ -1,4 +1,4 @@
-import { TextField } from "../../../components/form.field";
+import { TextField } from "../../../components/form-fields/text.field";
 import { ButtonPrimay, ButtonSecondary } from "../../../components/button";
 
 function LocationEdit({
