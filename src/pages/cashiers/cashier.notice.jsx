@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { CashierReport } from "./cashier-reports";
 import { store } from "../../stores";
 import { useFormatterHook } from "../../components/formatter.hook";
+import ModalBackground from "../../components/modals/modal.background";
+import ModalContent from "../../components/modals/modal.content";
 
 const CashierNotice = ({ isShowAlert, setIsShowAlert, transactionId }) => {
 	const componentRef = useRef();
@@ -17,25 +19,15 @@ const CashierNotice = ({ isShowAlert, setIsShowAlert, transactionId }) => {
 	const changePayment = store.getState().transactionValue.changePayment;
 
 	return (
-		<div
-			className={`fixed top-0 right-0 bottom-0 left-0 z-[9999] flex justify-center duration-200 ease-in-out ${
-				isShowAlert ? "scale-100" : "scale-0"
-			}`}
-		>
+		<>
 			<div className="invisible">
 				<CashierReport ref={componentRef} id={transactionId} />
 			</div>
 
-			<div
-				className={`absolute top-0 right-0 bottom-0 left-0 bg-black opacity-20 ${
-					isShowAlert ? "visible" : "invisible"
-				}`}
-			></div>
-			<div
-				className="absolute top-[100px] z-[99] w-[400px] rounded-lg border border-slate-200 bg-white p-10 shadow-lg shadow-slate-400"
-				onClick={(e) => e.stopPropagation()}
-			>
-				<div className="flex w-full justify-center">
+			<ModalBackground state={isShowAlert}></ModalBackground>
+
+			<ModalContent state={isShowAlert} width="w-[400px]">
+				<div className="flex w-full justify-center pt-5">
 					<img
 						className="mb-10 h-[100px] w-[100px]"
 						src={iconSuccess}
@@ -56,27 +48,28 @@ const CashierNotice = ({ isShowAlert, setIsShowAlert, transactionId }) => {
 					</p>
 				</div>
 
-				<div className="flex w-full justify-center">
-					<div
-						className="mr-5"
-						onClick={() => {
-							handlePrint();
-							setIsShowAlert(false);
-						}}
-					>
-						<ButtonPrimay name="Print Note" type="submit" />
+				<div className="flex w-full justify-center pb-5">
+					<div className="mr-5">
+						<ButtonPrimay
+							name="Print Note"
+							type="submit"
+							onClick={() => {
+								handlePrint();
+								setIsShowAlert(false);
+							}}
+						/>
 					</div>
 
-					<div
+					<ButtonSecondary
+						name="Close"
+						type="button"
 						onClick={() => {
 							setIsShowAlert(false);
 						}}
-					>
-						<ButtonSecondary name="Close" type="button" />
-					</div>
+					/>
 				</div>
-			</div>
-		</div>
+			</ModalContent>
+		</>
 	);
 };
 
