@@ -4,6 +4,8 @@ import { useStockOpnameHook } from "./stock-opname.hook";
 import moment from "moment";
 import "moment/locale/id";
 import { Pagination } from "../../components/pagination";
+import TitleSection from "../../components/title-sections/title-section";
+import CardContent from "../../components/cards/card.content";
 
 function StockOpname() {
 	const navigate = useNavigate();
@@ -19,11 +21,9 @@ function StockOpname() {
 
 	return (
 		<section className="w-full">
-			<div className="mb-5">
-				<span className="text-2xl text-slate-600">Stock Opname List</span>
-			</div>
+			<TitleSection>Stock Opname List</TitleSection>
 
-			<div className="card p-5">
+			<CardContent>
 				<div className="mb-5">
 					<ButtonPrimayLg
 						name="Set Stock"
@@ -34,7 +34,7 @@ function StockOpname() {
 
 				<table className="table">
 					<thead>
-						<tr className="border-b-2 border-slate-400">
+						<tr className="tr-head">
 							<th>Date</th>
 							<th>Transaction Code</th>
 							<th>Operator</th>
@@ -45,10 +45,7 @@ function StockOpname() {
 					<tbody>
 						{stockOpnameList.map((value, index) => {
 							return (
-								<tr
-									className="border-b border-slate-400 text-center"
-									key={index}
-								>
+								<tr className="tr-body text-center" key={index}>
 									<td>{moment(value.createdAt).locale("id").format("L")}</td>
 									<td>{value.stock_opname_id}</td>
 									<td>{value.operator}</td>
@@ -79,7 +76,7 @@ function StockOpname() {
 						handleSetPage={handleSetPage}
 					/>
 				</div>
-			</div>
+			</CardContent>
 		</section>
 	);
 }

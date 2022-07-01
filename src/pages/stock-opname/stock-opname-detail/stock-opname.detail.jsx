@@ -2,6 +2,8 @@ import moment from "moment";
 import "moment/locale/id";
 import { useNavigate } from "react-router-dom";
 import { ButtonSecondary } from "../../../components/button";
+import CardContent from "../../../components/cards/card.content";
+import TitleSection from "../../../components/title-sections/title-section";
 import { useStockOpnameDetailHook } from "./stock-opname.detail.hook";
 
 function StockOpnameDetail() {
@@ -11,11 +13,9 @@ function StockOpnameDetail() {
 
 	return (
 		<section className="w-full">
-			<div className="mb-5">
-				<span className="text-2xl text-slate-600">Stock Opname Detail</span>
-			</div>
+			<TitleSection>Stock Opaname Detail</TitleSection>
 
-			<div className="card p-5">
+			<CardContent>
 				<div className="mb-5 flex w-full justify-between">
 					<div className="flex w-[48%] items-center justify-between">
 						<p>Date</p>
@@ -43,7 +43,7 @@ function StockOpnameDetail() {
 
 				<table className="table">
 					<thead>
-						<tr className="border-b-2 border-slate-400">
+						<tr className="tr-head">
 							<th className="pl-2 text-left">Name</th>
 							<th>Stock</th>
 							<th>Unit</th>
@@ -54,7 +54,7 @@ function StockOpnameDetail() {
 					<tbody className="text-center">
 						{stockOpnameList.map((data, index) => {
 							return (
-								<tr className="border-b border-slate-400" key={index}>
+								<tr className="tr-body" key={index}>
 									<td className="pl-2 text-left">{data.product.name}</td>
 									<td>{data.stock}</td>
 									<td className="capitalize">{data.product.unit.name}</td>
@@ -85,7 +85,7 @@ function StockOpnameDetail() {
 					type="button"
 					onClick={() => navigate(-1)}
 				/>
-			</div>
+			</CardContent>
 		</section>
 	);
 }

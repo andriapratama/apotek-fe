@@ -9,7 +9,11 @@ import {
 import { ShowProductList } from "../../../components/show-product/show-product.component";
 import { setPageRedux } from "../../../stores/reducers/pagination.reducer";
 import { useStockOpnameNewHook } from "./stock-opname.new.hook";
-import { WarningAlert } from "../../../components/alert";
+import { WarningAlert } from "../../../components/alerts/warning.alert";
+import TitleSection from "../../../components/title-sections/title-section";
+import CardContent from "../../../components/cards/card.content";
+import ErrorForm from "../../../components/errors/error.form";
+import ErrorWithBg from "../../../components/errors/error.background";
 
 function StockOpnameNew() {
 	const {
@@ -53,11 +57,9 @@ function StockOpnameNew() {
 				storeData={storeStockOpnameData}
 			/>
 
-			<div className="mb-5">
-				<span className="text-2xl text-slate-600">Set Stock</span>
-			</div>
+			<TitleSection>Set Stock</TitleSection>
 
-			<form className="card p-5">
+			<CardContent>
 				<div className="mb-5 flex w-full justify-between">
 					<div className="flex w-[48%] items-center justify-between">
 						<p>Date</p>
@@ -84,20 +86,14 @@ function StockOpnameNew() {
 							setErrorMessageNote("");
 						}}
 					></textarea>
-					{errorMessageNote ? (
-						<div className="text-sm text-red-600">{errorMessageNote}</div>
-					) : null}
+					{errorMessageNote ? <ErrorForm>{errorMessageNote}</ErrorForm> : null}
 				</div>
 
-				{errorMessage ? (
-					<div className="mb-5 w-full rounded-lg bg-red-200 py-2 text-center text-red-600">
-						{errorMessage}
-					</div>
-				) : null}
+				{errorMessage ? <ErrorWithBg>{errorMessage}</ErrorWithBg> : null}
 
 				<table className="table">
 					<thead>
-						<tr className="border-b-2 border-slate-400">
+						<tr className="tr-head">
 							<th className="pl-2 text-left">Name</th>
 							<th>Stock</th>
 							<th>Unit</th>
@@ -109,10 +105,7 @@ function StockOpnameNew() {
 					<tbody>
 						{transactionList.map((value, index) => {
 							return (
-								<tr
-									className="border-b border-slate-400 text-center"
-									key={index}
-								>
+								<tr className="tr-body text-center" key={index}>
 									<td className="pl-2 text-left">{value.name}</td>
 									<td>{value.stock}</td>
 									<td className="capitalize">{value.unit}</td>
@@ -174,7 +167,7 @@ function StockOpnameNew() {
 				>
 					Save
 				</button>
-			</form>
+			</CardContent>
 		</section>
 	);
 }
