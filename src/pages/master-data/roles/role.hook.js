@@ -21,7 +21,6 @@ export const useRoleHook = () => {
 	const [roleList, setRoleList] = useState([]);
 	const [isShowUpdate, setIsShowUpdate] = useState(false);
 	const [isDangerAlert, setIsDangerAlert] = useState(false);
-	const [errorsMessage, setErrorsMessage] = useState("");
 	const [totalPage, setTotalPage] = useState(0);
 	const [page, setPage] = useState(pageRedux);
 	const [roleValue, setRoleValue] = useState({
@@ -37,7 +36,7 @@ export const useRoleHook = () => {
 			formikStore.resetForm();
 			showAllRoleData();
 		} catch (error) {
-			setErrorsMessage(error.response.data.message);
+			console.log(error.response.data.message);
 		}
 	};
 
@@ -86,7 +85,7 @@ export const useRoleHook = () => {
 				name: "",
 			});
 		} catch (error) {
-			setErrorsMessage(error.response.data.message);
+			console.log(error.response.data.message);
 		}
 	};
 
@@ -149,8 +148,6 @@ export const useRoleHook = () => {
 		isShowUpdate,
 		setIsShowUpdate,
 		handleEdit,
-		errorsMessage,
-		setErrorsMessage,
 		formikStore,
 		formikUpdate,
 		totalPage,

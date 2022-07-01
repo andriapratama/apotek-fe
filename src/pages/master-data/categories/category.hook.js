@@ -21,7 +21,6 @@ export const useCategoryHook = () => {
 	const [categoryList, setCategoryList] = useState([]);
 	const [isShowUpdate, setIsShowUpdate] = useState(false);
 	const [isDangerAlert, setIsDangerAlert] = useState(false);
-	const [errorsMessage, setErrorsMessage] = useState("");
 	const [totalPage, setTotalPage] = useState(0);
 	const [page, setPage] = useState(pageRedux);
 	const [categoryValue, setCategoryValue] = useState({
@@ -37,7 +36,7 @@ export const useCategoryHook = () => {
 			formikStore.resetForm();
 			showAllCategoryData();
 		} catch (error) {
-			setErrorsMessage(error.response.data.message);
+			console.log(error.response.data.message);
 		}
 	};
 
@@ -86,7 +85,7 @@ export const useCategoryHook = () => {
 				name: "",
 			});
 		} catch (error) {
-			setErrorsMessage(error.response.data.message);
+			console.log(error.response.data.message);
 		}
 	};
 
@@ -150,8 +149,6 @@ export const useCategoryHook = () => {
 		isShowUpdate,
 		setIsShowUpdate,
 		handleEdit,
-		errorsMessage,
-		setErrorsMessage,
 		formikStore,
 		formikUpdate,
 		totalPage,

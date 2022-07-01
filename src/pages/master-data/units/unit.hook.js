@@ -21,7 +21,6 @@ export const useUnitHook = () => {
 	const [unitList, setUnitList] = useState([]);
 	const [isShowUpdate, setIsShowUpdate] = useState(false);
 	const [isDangerAlert, setIsDangerAlert] = useState(false);
-	const [errorsMessage, setErrorsMessage] = useState("");
 	const [totalPage, setTotalPage] = useState(0);
 	const [page, setPage] = useState(pageRedux);
 	const [unitValue, setUnitValue] = useState({
@@ -37,7 +36,7 @@ export const useUnitHook = () => {
 			formikStore.resetForm();
 			showAllUnitData();
 		} catch (error) {
-			setErrorsMessage(error.response.data.message);
+			console.log(error.response.data.message);
 		}
 	};
 
@@ -86,7 +85,7 @@ export const useUnitHook = () => {
 				name: "",
 			});
 		} catch (error) {
-			setErrorsMessage(error.response.data.message);
+			console.log(error.response.data.message);
 		}
 	};
 
@@ -150,8 +149,6 @@ export const useUnitHook = () => {
 		isShowUpdate,
 		setIsShowUpdate,
 		handleEdit,
-		errorsMessage,
-		setErrorsMessage,
 		formikStore,
 		formikUpdate,
 		totalPage,

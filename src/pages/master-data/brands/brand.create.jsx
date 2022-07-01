@@ -1,13 +1,10 @@
 import { TextField } from "../../../components/form-fields/text.field";
 import { ButtonPrimay } from "../../../components/button";
 
-function BrandCreate({ formik, errorsMessage, setErrorsMessage }) {
+function BrandCreate({ formik }) {
 	return (
 		<form className="relative h-auto w-full" onSubmit={formik.handleSubmit}>
-			<div
-				className="flex w-full items-center justify-start"
-				onClick={() => setErrorsMessage("")}
-			>
+			<div className="flex w-full items-center justify-start">
 				<div className="mr-5 w-[300px]">
 					<TextField
 						name="name"
@@ -22,10 +19,6 @@ function BrandCreate({ formik, errorsMessage, setErrorsMessage }) {
 
 				<ButtonPrimay name="save" type="submit" />
 			</div>
-
-			{errorsMessage ? (
-				<div className="absolute text-xs text-red-500">{errorsMessage}</div>
-			) : null}
 		</form>
 	);
 }

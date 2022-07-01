@@ -1,19 +1,10 @@
 import { TextField } from "../../../components/form-fields/text.field";
 import { ButtonPrimay, ButtonSecondary } from "../../../components/button";
 
-function RoleEdit({
-	formik,
-	errorsMessage,
-	setErrorsMessage,
-	setIsShowUpdate,
-	setRoleValue,
-}) {
+function RoleEdit({ formik, setIsShowUpdate, setRoleValue }) {
 	return (
 		<form className="relative h-auto w-full" onSubmit={formik.handleSubmit}>
-			<div
-				className="flex w-full items-center justify-start"
-				onClick={() => setErrorsMessage("")}
-			>
+			<div className="flex w-full items-center justify-start">
 				<div className="mr-5 w-[300px]">
 					<TextField
 						name="name"
@@ -29,7 +20,9 @@ function RoleEdit({
 					<ButtonPrimay name="update" type="submit" />
 				</div>
 
-				<div
+				<ButtonSecondary
+					name="cancel"
+					type="button"
 					onClick={() => {
 						setIsShowUpdate(false);
 						setRoleValue({
@@ -37,14 +30,8 @@ function RoleEdit({
 							name: "",
 						});
 					}}
-				>
-					<ButtonSecondary name="cancel" type="button" />
-				</div>
+				/>
 			</div>
-
-			{errorsMessage ? (
-				<div className="absolute text-xs text-red-500">{errorsMessage}</div>
-			) : null}
 		</form>
 	);
 }
